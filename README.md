@@ -26,7 +26,7 @@ The architecture combines:
 4. **Conditional flow** — IFConditionalFlow learns the distribution of phase differences given context and magnitude.  
 5. **Reconstruction** — The phase is integrated cumulatively, and iSTFT converts complex spectra back to waveform audio.  
 
-The file [`Final.ipynb`](./Final.ipynb) provides an **end-to-end demonstration**:
+The file [`Demo.ipynb`](./Demo.ipynb) provides an **end-to-end demonstration**:
 - Loads model weights and validation data  
 - Visualizes waveform and spectrograms  
 - Generates autoregressive predictions  
