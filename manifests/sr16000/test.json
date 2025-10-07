@@ -1,0 +1,4447 @@
+[
+  {
+    "id": "organ_electronic_028-103-127",
+    "path": "dataset/nsynth-train/audio/organ_electronic_028-103-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_078-083-100",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_078-083-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_010-026-127",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_010-026-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_009-086-100",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_009-086-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_electronic_027-045-025",
+    "path": "dataset/nsynth-train/audio/bass_electronic_027-045-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_135-047-075",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_135-047-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_046-075-025",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_046-075-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "flute_synthetic_000-021-050",
+    "path": "dataset/nsynth-train/audio/flute_synthetic_000-021-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_021-046-025",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_021-046-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_018-085-127",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_018-085-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "flute_synthetic_000-069-075",
+    "path": "dataset/nsynth-train/audio/flute_synthetic_000-069-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_068-087-050",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_068-087-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_electronic_022-027-100",
+    "path": "dataset/nsynth-train/audio/guitar_electronic_022-027-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_057-051-127",
+    "path": "dataset/nsynth-train/audio/organ_electronic_057-051-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_104-050-100",
+    "path": "dataset/nsynth-train/audio/organ_electronic_104-050-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_011-072-050",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_011-072-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_synthetic_000-101-025",
+    "path": "dataset/nsynth-train/audio/keyboard_synthetic_000-101-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_015-022-025",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_015-022-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_068-049-127",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_068-049-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_011-049-127",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_011-049-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_006-062-025",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_006-062-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_071-029-025",
+    "path": "dataset/nsynth-train/audio/string_acoustic_071-029-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_078-074-025",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_078-074-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_synthetic_000-082-050",
+    "path": "dataset/nsynth-train/audio/keyboard_synthetic_000-082-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_059-058-075",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_059-058-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_023-041-127",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_023-041-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_003-068-050",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_003-068-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_003-067-025",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_003-067-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_078-037-075",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_078-037-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_021-099-025",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_021-099-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_113-079-127",
+    "path": "dataset/nsynth-train/audio/organ_electronic_113-079-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_028-084-025",
+    "path": "dataset/nsynth-train/audio/organ_electronic_028-084-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_007-043-127",
+    "path": "dataset/nsynth-train/audio/organ_electronic_007-043-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_002-101-075",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_002-101-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_059-044-127",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_059-044-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_015-035-100",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_015-035-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_015-107-075",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_015-107-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_electronic_018-024-050",
+    "path": "dataset/nsynth-train/audio/bass_electronic_018-024-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_062-063-050",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_062-063-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_001-086-127",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_001-086-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_015-094-100",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_015-094-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_001-083-100",
+    "path": "dataset/nsynth-train/audio/organ_electronic_001-083-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_057-036-025",
+    "path": "dataset/nsynth-train/audio/organ_electronic_057-036-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_006-082-050",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_006-082-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_023-048-075",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_023-048-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_acoustic_004-058-050",
+    "path": "dataset/nsynth-train/audio/keyboard_acoustic_004-058-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_011-077-050",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_011-077-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_002-061-050",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_002-061-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_016-082-050",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_016-082-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_134-052-127",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_134-052-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_062-094-025",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_062-094-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_015-073-025",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_015-073-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_037-066-127",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_037-066-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_001-072-075",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_001-072-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_030-040-025",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_030-040-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_001-096-025",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_001-096-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_018-058-127",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_018-058-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_021-040-127",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_021-040-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_synthetic_000-064-075",
+    "path": "dataset/nsynth-train/audio/keyboard_synthetic_000-064-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_015-092-050",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_015-092-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_056-053-127",
+    "path": "dataset/nsynth-train/audio/string_acoustic_056-053-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_134-042-025",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_134-042-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_080-051-050",
+    "path": "dataset/nsynth-train/audio/string_acoustic_080-051-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_021-062-050",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_021-062-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_057-069-100",
+    "path": "dataset/nsynth-train/audio/organ_electronic_057-069-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_030-074-075",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_030-074-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_011-073-127",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_011-073-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_034-031-100",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_034-031-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_002-107-075",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_002-107-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_electronic_028-080-100",
+    "path": "dataset/nsynth-train/audio/guitar_electronic_028-080-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_046-066-050",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_046-066-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_018-076-100",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_018-076-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_071-034-050",
+    "path": "dataset/nsynth-train/audio/string_acoustic_071-034-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_056-052-100",
+    "path": "dataset/nsynth-train/audio/string_acoustic_056-052-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_023-088-100",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_023-088-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_062-023-075",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_062-023-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_047-074-127",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_047-074-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_electronic_018-029-127",
+    "path": "dataset/nsynth-train/audio/bass_electronic_018-029-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_003-042-050",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_003-042-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_014-034-075",
+    "path": "dataset/nsynth-train/audio/string_acoustic_014-034-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_009-079-050",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_009-079-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_010-068-025",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_010-068-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_016-075-025",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_016-075-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_007-027-100",
+    "path": "dataset/nsynth-train/audio/organ_electronic_007-027-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_acoustic_004-088-050",
+    "path": "dataset/nsynth-train/audio/keyboard_acoustic_004-088-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_098-092-050",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_098-092-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_synthetic_000-083-127",
+    "path": "dataset/nsynth-train/audio/keyboard_synthetic_000-083-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_028-082-050",
+    "path": "dataset/nsynth-train/audio/organ_electronic_028-082-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_003-043-050",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_003-043-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_021-061-050",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_021-061-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_057-068-127",
+    "path": "dataset/nsynth-train/audio/string_acoustic_057-068-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_electronic_022-071-050",
+    "path": "dataset/nsynth-train/audio/guitar_electronic_022-071-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_003-035-100",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_003-035-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_028-038-127",
+    "path": "dataset/nsynth-train/audio/organ_electronic_028-038-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_098-062-127",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_098-062-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_009-052-025",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_009-052-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_014-029-050",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_014-029-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_007-046-050",
+    "path": "dataset/nsynth-train/audio/organ_electronic_007-046-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_015-053-050",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_015-053-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_010-097-100",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_010-097-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_098-090-075",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_098-090-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_electronic_027-060-025",
+    "path": "dataset/nsynth-train/audio/bass_electronic_027-060-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_030-082-025",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_030-082-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "vocal_synthetic_003-091-075",
+    "path": "dataset/nsynth-train/audio/vocal_synthetic_003-091-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_023-058-100",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_023-058-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_001-060-127",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_001-060-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_synthetic_000-075-025",
+    "path": "dataset/nsynth-train/audio/keyboard_synthetic_000-075-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_113-025-100",
+    "path": "dataset/nsynth-train/audio/organ_electronic_113-025-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_electronic_028-027-025",
+    "path": "dataset/nsynth-train/audio/guitar_electronic_028-027-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_014-089-075",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_014-089-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_034-027-025",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_034-027-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_014-087-050",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_014-087-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_030-058-025",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_030-058-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_001-055-127",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_001-055-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_016-087-127",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_016-087-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_011-054-075",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_011-054-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_electronic_027-041-100",
+    "path": "dataset/nsynth-train/audio/bass_electronic_027-041-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "flute_acoustic_002-101-100",
+    "path": "dataset/nsynth-train/audio/flute_acoustic_002-101-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "flute_synthetic_000-035-075",
+    "path": "dataset/nsynth-train/audio/flute_synthetic_000-035-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_021-025-025",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_021-025-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_electronic_022-088-127",
+    "path": "dataset/nsynth-train/audio/guitar_electronic_022-088-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_069-077-075",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_069-077-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_046-076-100",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_046-076-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "flute_acoustic_002-099-025",
+    "path": "dataset/nsynth-train/audio/flute_acoustic_002-099-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_078-062-127",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_078-062-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_009-053-127",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_009-053-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_acoustic_004-074-127",
+    "path": "dataset/nsynth-train/audio/keyboard_acoustic_004-074-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_098-061-050",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_098-061-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_012-032-075",
+    "path": "dataset/nsynth-train/audio/string_acoustic_012-032-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_135-100-127",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_135-100-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "vocal_synthetic_003-095-127",
+    "path": "dataset/nsynth-train/audio/vocal_synthetic_003-095-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_010-039-100",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_010-039-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_071-025-050",
+    "path": "dataset/nsynth-train/audio/string_acoustic_071-025-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_018-073-025",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_018-073-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_002-023-100",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_002-023-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_030-090-050",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_030-090-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_071-032-050",
+    "path": "dataset/nsynth-train/audio/string_acoustic_071-032-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_015-056-127",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_015-056-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_electronic_027-046-050",
+    "path": "dataset/nsynth-train/audio/bass_electronic_027-046-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_002-026-075",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_002-026-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_015-046-025",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_015-046-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_006-030-050",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_006-030-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "flute_synthetic_000-077-127",
+    "path": "dataset/nsynth-train/audio/flute_synthetic_000-077-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_135-079-127",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_135-079-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_057-057-075",
+    "path": "dataset/nsynth-train/audio/organ_electronic_057-057-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "vocal_synthetic_003-021-050",
+    "path": "dataset/nsynth-train/audio/vocal_synthetic_003-021-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_001-044-050",
+    "path": "dataset/nsynth-train/audio/organ_electronic_001-044-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_electronic_028-038-050",
+    "path": "dataset/nsynth-train/audio/guitar_electronic_028-038-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_098-039-025",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_098-039-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_018-059-025",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_018-059-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_010-044-100",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_010-044-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_023-067-100",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_023-067-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_059-044-075",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_059-044-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_electronic_028-054-075",
+    "path": "dataset/nsynth-train/audio/guitar_electronic_028-054-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_009-059-025",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_009-059-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_electronic_028-082-075",
+    "path": "dataset/nsynth-train/audio/guitar_electronic_028-082-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_021-037-075",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_021-037-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_009-068-025",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_009-068-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_134-053-075",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_134-053-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_002-100-127",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_002-100-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_135-050-075",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_135-050-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_062-084-127",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_062-084-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_007-053-100",
+    "path": "dataset/nsynth-train/audio/organ_electronic_007-053-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_electronic_028-102-050",
+    "path": "dataset/nsynth-train/audio/guitar_electronic_028-102-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_009-042-025",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_009-042-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_062-053-075",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_062-053-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_135-055-100",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_135-055-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_037-041-050",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_037-041-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_034-079-075",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_034-079-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "vocal_synthetic_003-051-127",
+    "path": "dataset/nsynth-train/audio/vocal_synthetic_003-051-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_electronic_018-063-100",
+    "path": "dataset/nsynth-train/audio/bass_electronic_018-063-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_001-047-127",
+    "path": "dataset/nsynth-train/audio/organ_electronic_001-047-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_002-093-050",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_002-093-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_012-052-075",
+    "path": "dataset/nsynth-train/audio/string_acoustic_012-052-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_062-080-100",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_062-080-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_003-067-050",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_003-067-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_071-053-050",
+    "path": "dataset/nsynth-train/audio/string_acoustic_071-053-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_006-026-025",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_006-026-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_010-100-075",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_010-100-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_104-068-100",
+    "path": "dataset/nsynth-train/audio/organ_electronic_104-068-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_134-068-025",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_134-068-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_030-102-075",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_030-102-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_electronic_018-038-050",
+    "path": "dataset/nsynth-train/audio/bass_electronic_018-038-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_009-078-025",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_009-078-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_014-079-075",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_014-079-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "vocal_synthetic_003-030-100",
+    "path": "dataset/nsynth-train/audio/vocal_synthetic_003-030-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_104-056-127",
+    "path": "dataset/nsynth-train/audio/organ_electronic_104-056-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_068-082-100",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_068-082-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_033-031-075",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_033-031-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_010-051-127",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_010-051-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_098-070-050",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_098-070-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_synthetic_000-057-025",
+    "path": "dataset/nsynth-train/audio/keyboard_synthetic_000-057-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_014-021-127",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_014-021-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_104-056-050",
+    "path": "dataset/nsynth-train/audio/organ_electronic_104-056-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_023-091-100",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_023-091-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_046-093-100",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_046-093-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_electronic_022-060-127",
+    "path": "dataset/nsynth-train/audio/guitar_electronic_022-060-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_056-044-075",
+    "path": "dataset/nsynth-train/audio/string_acoustic_056-044-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_059-046-100",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_059-046-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_028-075-100",
+    "path": "dataset/nsynth-train/audio/organ_electronic_028-075-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_014-100-075",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_014-100-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_014-059-025",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_014-059-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_135-083-100",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_135-083-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "vocal_synthetic_003-062-075",
+    "path": "dataset/nsynth-train/audio/vocal_synthetic_003-062-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_080-026-075",
+    "path": "dataset/nsynth-train/audio/string_acoustic_080-026-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_098-057-075",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_098-057-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_098-091-075",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_098-091-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "vocal_synthetic_003-092-127",
+    "path": "dataset/nsynth-train/audio/vocal_synthetic_003-092-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_134-083-025",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_134-083-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_098-043-025",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_098-043-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_011-070-050",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_011-070-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_015-087-075",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_015-087-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_062-094-100",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_062-094-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_018-063-100",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_018-063-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_electronic_018-055-075",
+    "path": "dataset/nsynth-train/audio/bass_electronic_018-055-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_056-044-075",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_056-044-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_113-077-050",
+    "path": "dataset/nsynth-train/audio/organ_electronic_113-077-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_028-105-075",
+    "path": "dataset/nsynth-train/audio/organ_electronic_028-105-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_015-102-075",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_015-102-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_012-043-025",
+    "path": "dataset/nsynth-train/audio/string_acoustic_012-043-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_062-043-050",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_062-043-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_003-051-025",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_003-051-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_135-093-127",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_135-093-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_015-027-075",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_015-027-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_electronic_028-104-025",
+    "path": "dataset/nsynth-train/audio/guitar_electronic_028-104-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_010-023-100",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_010-023-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_034-021-050",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_034-021-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_electronic_022-086-025",
+    "path": "dataset/nsynth-train/audio/guitar_electronic_022-086-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_134-074-127",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_134-074-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "vocal_acoustic_000-068-127",
+    "path": "dataset/nsynth-train/audio/vocal_acoustic_000-068-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_synthetic_000-059-025",
+    "path": "dataset/nsynth-train/audio/keyboard_synthetic_000-059-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_059-056-075",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_059-056-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_056-120-025",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_056-120-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_034-063-025",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_034-063-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_098-027-050",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_098-027-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_001-056-100",
+    "path": "dataset/nsynth-train/audio/organ_electronic_001-056-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_057-059-100",
+    "path": "dataset/nsynth-train/audio/organ_electronic_057-059-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_069-069-075",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_069-069-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_electronic_018-061-100",
+    "path": "dataset/nsynth-train/audio/bass_electronic_018-061-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_034-053-050",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_034-053-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_021-072-075",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_021-072-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_069-065-025",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_069-065-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_015-089-127",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_015-089-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_113-042-050",
+    "path": "dataset/nsynth-train/audio/organ_electronic_113-042-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "vocal_synthetic_003-043-050",
+    "path": "dataset/nsynth-train/audio/vocal_synthetic_003-043-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_134-068-050",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_134-068-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_001-044-050",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_001-044-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_014-029-127",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_014-029-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "flute_synthetic_000-086-050",
+    "path": "dataset/nsynth-train/audio/flute_synthetic_000-086-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_021-063-050",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_021-063-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_056-038-050",
+    "path": "dataset/nsynth-train/audio/string_acoustic_056-038-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_018-072-025",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_018-072-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_046-097-075",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_046-097-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_010-095-100",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_010-095-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_021-073-075",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_021-073-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_047-087-050",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_047-087-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_001-066-127",
+    "path": "dataset/nsynth-train/audio/organ_electronic_001-066-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_007-059-127",
+    "path": "dataset/nsynth-train/audio/organ_electronic_007-059-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_011-043-075",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_011-043-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_002-056-075",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_002-056-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_068-037-100",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_068-037-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_057-052-050",
+    "path": "dataset/nsynth-train/audio/organ_electronic_057-052-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_009-058-075",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_009-058-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_028-029-075",
+    "path": "dataset/nsynth-train/audio/organ_electronic_028-029-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_007-038-100",
+    "path": "dataset/nsynth-train/audio/organ_electronic_007-038-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_010-032-050",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_010-032-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_001-086-025",
+    "path": "dataset/nsynth-train/audio/organ_electronic_001-086-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_134-021-075",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_134-021-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_001-078-025",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_001-078-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "flute_synthetic_000-070-075",
+    "path": "dataset/nsynth-train/audio/flute_synthetic_000-070-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_023-039-100",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_023-039-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_033-106-025",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_033-106-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_028-031-075",
+    "path": "dataset/nsynth-train/audio/organ_electronic_028-031-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_033-108-025",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_033-108-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_016-056-127",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_016-056-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_068-028-100",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_068-028-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_synthetic_000-067-075",
+    "path": "dataset/nsynth-train/audio/keyboard_synthetic_000-067-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_033-058-100",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_033-058-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_135-092-100",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_135-092-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_056-064-050",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_056-064-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_synthetic_000-045-050",
+    "path": "dataset/nsynth-train/audio/keyboard_synthetic_000-045-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_098-022-075",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_098-022-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_007-062-025",
+    "path": "dataset/nsynth-train/audio/organ_electronic_007-062-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_033-028-025",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_033-028-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_033-060-050",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_033-060-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_021-060-127",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_021-060-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_080-051-075",
+    "path": "dataset/nsynth-train/audio/string_acoustic_080-051-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_033-076-050",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_033-076-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_062-039-050",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_062-039-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_071-027-100",
+    "path": "dataset/nsynth-train/audio/string_acoustic_071-027-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_007-039-075",
+    "path": "dataset/nsynth-train/audio/organ_electronic_007-039-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_033-065-127",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_033-065-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "flute_acoustic_002-077-127",
+    "path": "dataset/nsynth-train/audio/flute_acoustic_002-077-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_015-077-050",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_015-077-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_016-074-075",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_016-074-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_135-081-050",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_135-081-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_098-062-025",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_098-062-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_056-048-075",
+    "path": "dataset/nsynth-train/audio/string_acoustic_056-048-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_011-063-127",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_011-063-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_062-099-050",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_062-099-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_057-078-050",
+    "path": "dataset/nsynth-train/audio/string_acoustic_057-078-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_037-064-025",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_037-064-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_002-072-100",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_002-072-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_015-028-075",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_015-028-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_069-055-025",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_069-055-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_014-028-075",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_014-028-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_001-021-025",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_001-021-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_electronic_018-031-127",
+    "path": "dataset/nsynth-train/audio/bass_electronic_018-031-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_acoustic_004-057-127",
+    "path": "dataset/nsynth-train/audio/keyboard_acoustic_004-057-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_006-040-025",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_006-040-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_033-066-050",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_033-066-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_001-066-100",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_001-066-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_059-058-127",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_059-058-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_098-040-050",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_098-040-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_098-057-025",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_098-057-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_001-088-025",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_001-088-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_006-049-050",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_006-049-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "flute_synthetic_000-076-075",
+    "path": "dataset/nsynth-train/audio/flute_synthetic_000-076-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "vocal_acoustic_000-068-075",
+    "path": "dataset/nsynth-train/audio/vocal_acoustic_000-068-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_068-086-127",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_068-086-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_electronic_025-042-050",
+    "path": "dataset/nsynth-train/audio/bass_electronic_025-042-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_062-032-025",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_062-032-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_113-069-050",
+    "path": "dataset/nsynth-train/audio/organ_electronic_113-069-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_033-029-100",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_033-029-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_068-105-075",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_068-105-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_062-075-050",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_062-075-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_003-072-050",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_003-072-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_034-080-075",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_034-080-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_010-045-075",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_010-045-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_069-087-050",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_069-087-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_014-087-025",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_014-087-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_015-074-050",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_015-074-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "vocal_synthetic_003-103-100",
+    "path": "dataset/nsynth-train/audio/vocal_synthetic_003-103-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_134-106-127",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_134-106-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_003-096-075",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_003-096-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_056-108-050",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_056-108-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_016-075-100",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_016-075-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_016-081-075",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_016-081-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_010-041-075",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_010-041-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_098-065-127",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_098-065-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_electronic_022-045-025",
+    "path": "dataset/nsynth-train/audio/guitar_electronic_022-045-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_057-067-075",
+    "path": "dataset/nsynth-train/audio/string_acoustic_057-067-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_001-073-100",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_001-073-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_033-075-050",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_033-075-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_068-108-100",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_068-108-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_113-045-025",
+    "path": "dataset/nsynth-train/audio/organ_electronic_113-045-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_113-075-075",
+    "path": "dataset/nsynth-train/audio/organ_electronic_113-075-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_023-032-100",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_023-032-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_033-046-050",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_033-046-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_057-071-127",
+    "path": "dataset/nsynth-train/audio/string_acoustic_057-071-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_078-046-050",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_078-046-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_001-107-025",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_001-107-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_002-075-050",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_002-075-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_electronic_028-040-127",
+    "path": "dataset/nsynth-train/audio/guitar_electronic_028-040-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_002-106-075",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_002-106-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_011-050-050",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_011-050-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_068-101-127",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_068-101-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_068-091-050",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_068-091-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_016-076-100",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_016-076-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_001-090-050",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_001-090-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_078-073-075",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_078-073-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "flute_synthetic_000-105-075",
+    "path": "dataset/nsynth-train/audio/flute_synthetic_000-105-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_078-072-075",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_078-072-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_007-026-075",
+    "path": "dataset/nsynth-train/audio/organ_electronic_007-026-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_001-092-025",
+    "path": "dataset/nsynth-train/audio/organ_electronic_001-092-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_056-070-100",
+    "path": "dataset/nsynth-train/audio/string_acoustic_056-070-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_134-074-050",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_134-074-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_062-027-025",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_062-027-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_059-061-050",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_059-061-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_098-056-075",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_098-056-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_018-069-025",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_018-069-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_014-086-127",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_014-086-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "flute_synthetic_000-083-075",
+    "path": "dataset/nsynth-train/audio/flute_synthetic_000-083-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_synthetic_000-096-025",
+    "path": "dataset/nsynth-train/audio/keyboard_synthetic_000-096-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_034-040-050",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_034-040-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_030-075-127",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_030-075-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_009-020-127",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_009-020-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_033-103-050",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_033-103-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "flute_synthetic_000-041-127",
+    "path": "dataset/nsynth-train/audio/flute_synthetic_000-041-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_033-067-025",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_033-067-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_104-041-127",
+    "path": "dataset/nsynth-train/audio/organ_electronic_104-041-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_014-030-025",
+    "path": "dataset/nsynth-train/audio/string_acoustic_014-030-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_034-041-127",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_034-041-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_electronic_018-052-100",
+    "path": "dataset/nsynth-train/audio/bass_electronic_018-052-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "flute_acoustic_002-089-127",
+    "path": "dataset/nsynth-train/audio/flute_acoustic_002-089-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_007-080-025",
+    "path": "dataset/nsynth-train/audio/organ_electronic_007-080-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "flute_synthetic_000-046-100",
+    "path": "dataset/nsynth-train/audio/flute_synthetic_000-046-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_062-091-127",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_062-091-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_007-079-075",
+    "path": "dataset/nsynth-train/audio/organ_electronic_007-079-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_electronic_027-029-075",
+    "path": "dataset/nsynth-train/audio/bass_electronic_027-029-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_electronic_022-040-050",
+    "path": "dataset/nsynth-train/audio/guitar_electronic_022-040-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_033-089-100",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_033-089-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "flute_synthetic_000-021-075",
+    "path": "dataset/nsynth-train/audio/flute_synthetic_000-021-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_010-038-100",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_010-038-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_134-026-025",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_134-026-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_069-041-075",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_069-041-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_047-065-050",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_047-065-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_003-050-100",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_003-050-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_acoustic_004-032-100",
+    "path": "dataset/nsynth-train/audio/keyboard_acoustic_004-032-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "vocal_synthetic_003-100-100",
+    "path": "dataset/nsynth-train/audio/vocal_synthetic_003-100-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_018-081-050",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_018-081-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_001-058-075",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_001-058-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_021-052-127",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_021-052-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_014-052-100",
+    "path": "dataset/nsynth-train/audio/string_acoustic_014-052-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_046-082-100",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_046-082-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_037-036-025",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_037-036-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_057-075-100",
+    "path": "dataset/nsynth-train/audio/string_acoustic_057-075-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "vocal_synthetic_003-025-050",
+    "path": "dataset/nsynth-train/audio/vocal_synthetic_003-025-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_062-027-050",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_062-027-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_059-051-075",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_059-051-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_002-073-050",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_002-073-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_028-083-127",
+    "path": "dataset/nsynth-train/audio/organ_electronic_028-083-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_047-108-075",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_047-108-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_014-027-075",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_014-027-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_006-042-127",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_006-042-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_062-072-025",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_062-072-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_078-084-050",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_078-084-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_011-053-075",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_011-053-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_134-056-127",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_134-056-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_134-047-025",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_134-047-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_056-076-025",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_056-076-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "vocal_synthetic_003-047-100",
+    "path": "dataset/nsynth-train/audio/vocal_synthetic_003-047-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_034-025-127",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_034-025-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_098-059-025",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_098-059-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_057-084-100",
+    "path": "dataset/nsynth-train/audio/string_acoustic_057-084-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_068-053-100",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_068-053-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_068-023-075",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_068-023-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_001-076-075",
+    "path": "dataset/nsynth-train/audio/organ_electronic_001-076-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "flute_synthetic_000-095-127",
+    "path": "dataset/nsynth-train/audio/flute_synthetic_000-095-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_033-063-100",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_033-063-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "flute_synthetic_000-089-050",
+    "path": "dataset/nsynth-train/audio/flute_synthetic_000-089-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_021-034-050",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_021-034-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_electronic_028-075-100",
+    "path": "dataset/nsynth-train/audio/guitar_electronic_028-075-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_098-076-127",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_098-076-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_electronic_027-022-100",
+    "path": "dataset/nsynth-train/audio/bass_electronic_027-022-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_098-070-075",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_098-070-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_021-107-127",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_021-107-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_028-049-050",
+    "path": "dataset/nsynth-train/audio/organ_electronic_028-049-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_electronic_018-025-025",
+    "path": "dataset/nsynth-train/audio/bass_electronic_018-025-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_056-058-025",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_056-058-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_062-027-100",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_062-027-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_006-025-127",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_006-025-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_acoustic_004-035-025",
+    "path": "dataset/nsynth-train/audio/keyboard_acoustic_004-035-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "vocal_synthetic_003-066-127",
+    "path": "dataset/nsynth-train/audio/vocal_synthetic_003-066-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_046-074-050",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_046-074-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_028-094-050",
+    "path": "dataset/nsynth-train/audio/organ_electronic_028-094-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "vocal_synthetic_003-056-075",
+    "path": "dataset/nsynth-train/audio/vocal_synthetic_003-056-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_104-076-075",
+    "path": "dataset/nsynth-train/audio/organ_electronic_104-076-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_015-083-100",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_015-083-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_057-079-100",
+    "path": "dataset/nsynth-train/audio/organ_electronic_057-079-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_098-054-127",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_098-054-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_synthetic_000-066-075",
+    "path": "dataset/nsynth-train/audio/keyboard_synthetic_000-066-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_015-053-100",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_015-053-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "vocal_synthetic_003-053-075",
+    "path": "dataset/nsynth-train/audio/vocal_synthetic_003-053-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_synthetic_000-035-127",
+    "path": "dataset/nsynth-train/audio/keyboard_synthetic_000-035-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_010-106-127",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_010-106-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_056-053-100",
+    "path": "dataset/nsynth-train/audio/string_acoustic_056-053-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_056-065-075",
+    "path": "dataset/nsynth-train/audio/string_acoustic_056-065-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_electronic_018-036-100",
+    "path": "dataset/nsynth-train/audio/bass_electronic_018-036-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_069-049-050",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_069-049-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_135-095-050",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_135-095-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_003-037-025",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_003-037-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_015-064-050",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_015-064-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_098-075-100",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_098-075-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_electronic_022-048-127",
+    "path": "dataset/nsynth-train/audio/guitar_electronic_022-048-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_104-084-100",
+    "path": "dataset/nsynth-train/audio/organ_electronic_104-084-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_014-034-050",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_014-034-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "vocal_acoustic_000-057-050",
+    "path": "dataset/nsynth-train/audio/vocal_acoustic_000-057-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_056-114-025",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_056-114-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_023-066-075",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_023-066-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_098-086-127",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_098-086-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_056-058-100",
+    "path": "dataset/nsynth-train/audio/string_acoustic_056-058-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_023-061-075",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_023-061-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_electronic_025-029-025",
+    "path": "dataset/nsynth-train/audio/bass_electronic_025-029-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_062-088-075",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_062-088-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_010-053-050",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_010-053-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_056-047-025",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_056-047-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_078-050-050",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_078-050-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_028-035-100",
+    "path": "dataset/nsynth-train/audio/organ_electronic_028-035-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_acoustic_004-070-075",
+    "path": "dataset/nsynth-train/audio/keyboard_acoustic_004-070-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_acoustic_004-086-050",
+    "path": "dataset/nsynth-train/audio/keyboard_acoustic_004-086-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_033-087-050",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_033-087-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_028-038-050",
+    "path": "dataset/nsynth-train/audio/organ_electronic_028-038-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_002-069-050",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_002-069-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_023-062-050",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_023-062-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_135-104-050",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_135-104-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_104-027-025",
+    "path": "dataset/nsynth-train/audio/organ_electronic_104-027-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_135-072-100",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_135-072-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_098-067-075",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_098-067-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_009-090-100",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_009-090-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "vocal_synthetic_003-026-127",
+    "path": "dataset/nsynth-train/audio/vocal_synthetic_003-026-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_068-077-025",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_068-077-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_098-093-100",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_098-093-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_synthetic_000-075-100",
+    "path": "dataset/nsynth-train/audio/keyboard_synthetic_000-075-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_134-098-127",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_134-098-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "flute_acoustic_002-085-075",
+    "path": "dataset/nsynth-train/audio/flute_acoustic_002-085-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_electronic_028-071-075",
+    "path": "dataset/nsynth-train/audio/guitar_electronic_028-071-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_001-059-127",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_001-059-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_007-059-050",
+    "path": "dataset/nsynth-train/audio/organ_electronic_007-059-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_002-095-127",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_002-095-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_007-063-100",
+    "path": "dataset/nsynth-train/audio/organ_electronic_007-063-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_080-047-075",
+    "path": "dataset/nsynth-train/audio/string_acoustic_080-047-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_010-104-025",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_010-104-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_062-025-127",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_062-025-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_001-049-127",
+    "path": "dataset/nsynth-train/audio/organ_electronic_001-049-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_080-038-050",
+    "path": "dataset/nsynth-train/audio/string_acoustic_080-038-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_010-033-100",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_010-033-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_134-104-100",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_134-104-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_014-026-050",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_014-026-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_135-028-127",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_135-028-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_069-071-100",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_069-071-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_113-031-025",
+    "path": "dataset/nsynth-train/audio/organ_electronic_113-031-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_001-043-127",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_001-043-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_synthetic_000-029-075",
+    "path": "dataset/nsynth-train/audio/keyboard_synthetic_000-029-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_113-084-025",
+    "path": "dataset/nsynth-train/audio/organ_electronic_113-084-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_059-054-050",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_059-054-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_021-065-025",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_021-065-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_056-045-127",
+    "path": "dataset/nsynth-train/audio/string_acoustic_056-045-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_001-075-127",
+    "path": "dataset/nsynth-train/audio/organ_electronic_001-075-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_059-048-050",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_059-048-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_033-098-127",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_033-098-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_014-038-100",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_014-038-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_001-067-050",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_001-067-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_021-068-127",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_021-068-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_009-023-127",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_009-023-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "flute_synthetic_000-042-075",
+    "path": "dataset/nsynth-train/audio/flute_synthetic_000-042-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_033-054-050",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_033-054-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_021-108-127",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_021-108-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_023-079-075",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_023-079-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "flute_acoustic_002-087-050",
+    "path": "dataset/nsynth-train/audio/flute_acoustic_002-087-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_062-104-050",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_062-104-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_023-094-075",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_023-094-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_104-080-127",
+    "path": "dataset/nsynth-train/audio/organ_electronic_104-080-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_014-048-075",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_014-048-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_acoustic_004-059-100",
+    "path": "dataset/nsynth-train/audio/keyboard_acoustic_004-059-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_069-085-050",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_069-085-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_006-035-025",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_006-035-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_010-026-100",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_010-026-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_057-072-025",
+    "path": "dataset/nsynth-train/audio/string_acoustic_057-072-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_056-088-075",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_056-088-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_006-069-050",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_006-069-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_104-059-100",
+    "path": "dataset/nsynth-train/audio/organ_electronic_104-059-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_028-094-127",
+    "path": "dataset/nsynth-train/audio/organ_electronic_028-094-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_034-045-025",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_034-045-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_113-053-075",
+    "path": "dataset/nsynth-train/audio/organ_electronic_113-053-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_023-075-075",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_023-075-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_012-034-127",
+    "path": "dataset/nsynth-train/audio/string_acoustic_012-034-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_014-035-075",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_014-035-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_018-075-025",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_018-075-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_059-042-025",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_059-042-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_electronic_028-044-050",
+    "path": "dataset/nsynth-train/audio/guitar_electronic_028-044-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_electronic_028-106-100",
+    "path": "dataset/nsynth-train/audio/guitar_electronic_028-106-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_006-031-050",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_006-031-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_electronic_028-083-075",
+    "path": "dataset/nsynth-train/audio/guitar_electronic_028-083-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_104-062-100",
+    "path": "dataset/nsynth-train/audio/organ_electronic_104-062-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_069-048-050",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_069-048-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_014-084-050",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_014-084-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_acoustic_004-062-100",
+    "path": "dataset/nsynth-train/audio/keyboard_acoustic_004-062-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_098-031-050",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_098-031-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "flute_synthetic_000-060-075",
+    "path": "dataset/nsynth-train/audio/flute_synthetic_000-060-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_068-027-075",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_068-027-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_015-046-127",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_015-046-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "flute_synthetic_000-036-075",
+    "path": "dataset/nsynth-train/audio/flute_synthetic_000-036-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_011-060-100",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_011-060-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_009-084-100",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_009-084-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_034-027-075",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_034-027-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_012-048-025",
+    "path": "dataset/nsynth-train/audio/string_acoustic_012-048-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_016-084-050",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_016-084-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_007-031-075",
+    "path": "dataset/nsynth-train/audio/organ_electronic_007-031-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_electronic_028-070-050",
+    "path": "dataset/nsynth-train/audio/guitar_electronic_028-070-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_057-049-050",
+    "path": "dataset/nsynth-train/audio/organ_electronic_057-049-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_104-031-075",
+    "path": "dataset/nsynth-train/audio/organ_electronic_104-031-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_015-063-025",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_015-063-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_062-082-025",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_062-082-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_068-023-100",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_068-023-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_acoustic_004-055-127",
+    "path": "dataset/nsynth-train/audio/keyboard_acoustic_004-055-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_134-043-050",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_134-043-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_056-108-025",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_056-108-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_069-074-025",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_069-074-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_057-074-100",
+    "path": "dataset/nsynth-train/audio/string_acoustic_057-074-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_009-075-075",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_009-075-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_014-024-025",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_014-024-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_028-070-100",
+    "path": "dataset/nsynth-train/audio/organ_electronic_028-070-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_electronic_022-065-050",
+    "path": "dataset/nsynth-train/audio/guitar_electronic_022-065-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_electronic_028-059-050",
+    "path": "dataset/nsynth-train/audio/guitar_electronic_028-059-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_068-100-127",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_068-100-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_acoustic_004-061-100",
+    "path": "dataset/nsynth-train/audio/keyboard_acoustic_004-061-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_068-085-025",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_068-085-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_098-036-025",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_098-036-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_electronic_022-033-050",
+    "path": "dataset/nsynth-train/audio/guitar_electronic_022-033-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "vocal_synthetic_003-060-075",
+    "path": "dataset/nsynth-train/audio/vocal_synthetic_003-060-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "flute_acoustic_002-068-025",
+    "path": "dataset/nsynth-train/audio/flute_acoustic_002-068-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_135-084-025",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_135-084-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_014-083-127",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_014-083-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_electronic_022-049-025",
+    "path": "dataset/nsynth-train/audio/guitar_electronic_022-049-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_002-070-127",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_002-070-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_037-071-025",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_037-071-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_135-102-127",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_135-102-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "vocal_synthetic_003-040-025",
+    "path": "dataset/nsynth-train/audio/vocal_synthetic_003-040-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_electronic_018-049-100",
+    "path": "dataset/nsynth-train/audio/bass_electronic_018-049-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_014-085-025",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_014-085-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_007-083-075",
+    "path": "dataset/nsynth-train/audio/organ_electronic_007-083-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_069-032-025",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_069-032-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "flute_acoustic_002-090-075",
+    "path": "dataset/nsynth-train/audio/flute_acoustic_002-090-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_002-057-100",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_002-057-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_062-050-127",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_062-050-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_012-032-100",
+    "path": "dataset/nsynth-train/audio/string_acoustic_012-032-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_113-060-100",
+    "path": "dataset/nsynth-train/audio/organ_electronic_113-060-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_056-037-075",
+    "path": "dataset/nsynth-train/audio/string_acoustic_056-037-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "brass_acoustic_046-073-127",
+    "path": "dataset/nsynth-train/audio/brass_acoustic_046-073-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_001-049-050",
+    "path": "dataset/nsynth-train/audio/organ_electronic_001-049-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_electronic_027-054-075",
+    "path": "dataset/nsynth-train/audio/bass_electronic_027-054-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_028-063-025",
+    "path": "dataset/nsynth-train/audio/organ_electronic_028-063-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_synthetic_000-056-127",
+    "path": "dataset/nsynth-train/audio/keyboard_synthetic_000-056-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "flute_synthetic_000-059-100",
+    "path": "dataset/nsynth-train/audio/flute_synthetic_000-059-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "flute_acoustic_002-082-075",
+    "path": "dataset/nsynth-train/audio/flute_acoustic_002-082-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_068-088-050",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_068-088-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_009-013-075",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_009-013-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_009-022-075",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_009-022-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "keyboard_electronic_002-068-050",
+    "path": "dataset/nsynth-train/audio/keyboard_electronic_002-068-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_007-088-075",
+    "path": "dataset/nsynth-train/audio/organ_electronic_007-088-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_068-059-075",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_068-059-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "mallet_acoustic_062-052-050",
+    "path": "dataset/nsynth-train/audio/mallet_acoustic_062-052-050.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_071-050-100",
+    "path": "dataset/nsynth-train/audio/string_acoustic_071-050-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "reed_acoustic_023-046-025",
+    "path": "dataset/nsynth-train/audio/reed_acoustic_023-046-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_098-037-075",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_098-037-075.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_071-031-127",
+    "path": "dataset/nsynth-train/audio/string_acoustic_071-031-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_134-103-127",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_134-103-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "flute_acoustic_002-103-100",
+    "path": "dataset/nsynth-train/audio/flute_acoustic_002-103-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_010-027-025",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_010-027-025.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "guitar_acoustic_014-071-100",
+    "path": "dataset/nsynth-train/audio/guitar_acoustic_014-071-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "string_acoustic_071-054-100",
+    "path": "dataset/nsynth-train/audio/string_acoustic_071-054-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_electronic_027-047-127",
+    "path": "dataset/nsynth-train/audio/bass_electronic_027-047-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "bass_synthetic_098-074-127",
+    "path": "dataset/nsynth-train/audio/bass_synthetic_098-074-127.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  },
+  {
+    "id": "organ_electronic_104-078-100",
+    "path": "dataset/nsynth-train/audio/organ_electronic_104-078-100.wav",
+    "duration": 4.0,
+    "dataset": "nsynth",
+    "split": "test"
+  }
+]
