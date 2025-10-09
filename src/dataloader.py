@@ -371,7 +371,7 @@ def make_dataloader(
 ) -> Tuple[DataLoader, Dataset]:
     if num_workers is None:
         cpu = os.cpu_count() or 8
-        num_workers = max(2, min(8, cpu - 1))
+        num_workers = 8
 
     ds = PackedWindowsDataset(
         manifest_path=manifest_path,
