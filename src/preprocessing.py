@@ -243,18 +243,14 @@ def pass1_collect_stats(cfg: dict, manifest: List[Dict]) -> dict:
 
     # inizializza collector
     logmag_stats = RunningStats(
-        clip_quantiles=tuple(cfg["logmag_norm"].get("clip_quantiles", []))
-        if cfg["logmag_norm"].get("clip_quantiles")
-        else None
+        clip_quantiles=tuple(cfg["logmag_norm"].get("clip_quantiles", [])) if cfg["logmag_norm"].get("clip_quantiles") else None
     )
     if_cfg = cfg["if_norm"]
     F_bins = n_fft // 2 + 1
     if_stats = RobustPerBin(
         n_bins=F_bins,
         estimator=if_cfg.get("estimator", "mad"),
-        clip_quantiles=tuple(if_cfg.get("clip_quantiles", []))
-        if if_cfg.get("clip_quantiles")
-        else None,
+        clip_quantiles=tuple(if_cfg.get("clip_quantiles", [])) if if_cfg.get("clip_quantiles") else None
     )
 
     # loop sui file di train
