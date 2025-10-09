@@ -13,13 +13,14 @@ import torch.nn as nn
 from torch.optim import AdamW
 from collections import defaultdict
 
-os.environ.setdefault("PYTORCH_ENABLE_MPS_FALLBACK", "1")
-os.environ.setdefault("PYTORCH_MPS_HIGH_WATERMARK_RATIO", "0.0")
-
 from dataloader import make_dataloader
 from model.iffar import IFFARModel
 from model.loss import IFFARLoss
 from model.phase_rec import PhaseReconstructor
+
+torch.backends.cudnn.benchmark = True
+torch.backends.cudnn.deterministic = False
+torch.set_float32_matmul_precision('high')
 
 CONFIG: Dict = {
     "paths": {
@@ -55,7 +56,7 @@ CONFIG: Dict = {
         
         "mag_hidden": 256,
         "mag_use_prev_skip": True,
-        "mag_predict_logvar": true,
+        "mag_predict_logvar": True,
         "mag_spectral_smoothing": True,
         "mag_kernel": 7,
         "mag_dropout": 0.05,
@@ -100,7 +101,7 @@ CONFIG: Dict = {
 
     "eval": { "val_every": 1, "val_batches": 100 },
 
-    "log": { "log_every": 1000, "save_every": 1, "plot_every": 1000, "loss_json": "train_logs/loss_history.jsonl" },
+    "log": { "log_every": 1000, "save_every": 1, "plot_every": 100000, "loss_json": "train_logs/loss_history.jsonl" },
 
     "train_opts": {
         "loss_log_interval": 10
@@ -199,6 +200,10 @@ def build_optimizer(model: nn.Module):
     oc = CONFIG["optim"]; return AdamW(model.parameters(), lr=oc["lr"], betas=oc["betas"], weight_decay=oc["weight_decay"])
 
 def train():
+
+    tqdm.write(f"[setup] Device: {dev}, mixed precision: {CONFIG['amp']['dtype']}")
+    tqdm.write(f"[setup] Batch size: {CONFIG['data']['batch_size']}, L={CONFIG['data']['L']}, K={CONFIG['data']['K']}")
+    
     dev, scaler = _device_and_scaler(); torch.set_float32_matmul_precision("high")
     P = CONFIG["paths"]; stats = _load_json(P["stats_path"])
     mani_train, mani_val = _load_json(P["manifest_train"]), _load_json(P["manifest_val"])
@@ -359,6 +364,8 @@ def train():
             _cleanup(M_ctx, IF_ctx, M_tgt, IF_tgt); global_step += 1
 
         pbar.close()
+        torch.cuda.empty_cache()
+        gc.collect()
 
         if (epoch+1) % CONFIG["eval"]["val_every"] == 0:
             model.eval(); val_loss, n_batches = 0.0, 0
