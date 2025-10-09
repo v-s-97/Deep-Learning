@@ -10,12 +10,12 @@ import torch.nn.functional as F
 
 @dataclass
 class IFFlowConfig:
-    n_layers: int = 8
-    hidden: int = 128
-    kernel_size: int = 5
+    n_layers: int = 12
+    hidden: int = 256
+    kernel_size: int = 7
     use_tanh_scale: bool = True
-    scale_factor: float = 1.5
-    eps: float = 1e-6
+    scale_factor: float = 1.2
+    eps: float = 1e-5
 
 
 class CouplingNet(nn.Module):
