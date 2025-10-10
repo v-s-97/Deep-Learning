@@ -2,11 +2,17 @@ from __future__ import annotations
 from pathlib import Path
 from typing import List, Dict, Optional, Tuple
 import json
+import os
 import random
+import sys
+from concurrent.futures import ProcessPoolExecutor
+from functools import partial
+from multiprocessing import get_context
 import numpy as np
 import soundfile as sf
 import librosa
 import torch
+from tqdm import tqdm
 
 CONFIG = {
     "sample_rate": 16000,
@@ -89,6 +95,23 @@ def load_audio_resample(path: str, target_sr: int) -> tuple[np.ndarray, int]:
     peak = np.max(np.abs(y)) + 1e-9
     y = (y / peak).astype(np.float32)
     return y, sr
+
+
+# Parallel helpers
+def _torch_set_threads(num_threads: int = 1) -> None:
+    """Force torch and common math libs to single-thread mode within workers."""
+    for env_var in ("OMP_NUM_THREADS", "MKL_NUM_THREADS", "NUMEXPR_NUM_THREADS"):
+        os.environ[env_var] = str(num_threads)
+    torch.set_num_threads(num_threads)
+    if hasattr(torch, "set_num_interop_threads"):
+        torch.set_num_interop_threads(num_threads)
+
+
+def get_hann_window(win_length: int, window: str = "hann") -> torch.Tensor:
+    """Return a Hann window tensor on CPU for reuse across workers."""
+    if window.lower() != "hann":
+        raise ValueError(f"Only Hann window is supported in HPC path, got: {window}")
+    return torch.hann_window(win_length, periodic=True, dtype=torch.float32)
 
 
 # STFT & feature extraction
@@ -216,6 +239,93 @@ class RobustPerBin:
                 "clip_quantiles": self.clip_quantiles,
             }
 
+
+# Pass1 parallel workers -------------------------------------------------------
+_PASS1_CTX: Optional[Dict[str, object]] = None
+
+
+def _pass1_worker_initializer(ctx: Dict[str, object]) -> None:
+    """Prepare global context for pass1 workers."""
+    _torch_set_threads(1)
+    ctx_local = dict(ctx)
+    try:
+        from threadpoolctl import threadpool_limits  # type: ignore
+    except ImportError:
+        ctx_local["threadpool_limits"] = None
+    else:
+        ctx_local["threadpool_limits"] = threadpool_limits
+    ctx_local["window_tensor"] = get_hann_window(ctx_local["win_length"], ctx_local["window"])
+    global _PASS1_CTX
+    _PASS1_CTX = ctx_local
+
+
+def _pass1_worker_core(entry: Dict[str, object], ctx: Dict[str, object]) -> Dict[str, object]:
+    """Compute downsampled logmag and IF samples for statistics."""
+    y, sr = sf.read(entry["path"], dtype="float32")
+    if y.ndim > 1:
+        y = y.mean(axis=1)
+    if sr != ctx["sr"]:
+        y = librosa.resample(y, orig_sr=sr, target_sr=ctx["sr"], res_type="kaiser_best")
+        sr = ctx["sr"]
+    peak = float(np.max(np.abs(y)) + 1e-9)
+    y = (y / peak).astype(np.float32)
+
+    waveform = torch.from_numpy(y)
+    stft = torch.stft(
+        waveform,
+        n_fft=ctx["n_fft"],
+        hop_length=ctx["hop"],
+        win_length=ctx["win_length"],
+        window=ctx["window_tensor"],
+        center=ctx["center"],
+        pad_mode=ctx["pad_mode"],
+        return_complex=True,
+    )
+    X = stft.transpose(0, 1).cpu().numpy()
+    mag = np.abs(X)
+    logmag = compute_logmag(mag, eps=ctx["eps"])
+    phase = np.angle(X)
+    phase_u = unwrap_phase_time(phase)
+    if phase_u.shape[0] < 2:
+        raise ValueError(f"STFT returned less than two frames for {entry['path']}")
+    dphi = phase_u[1:] - phase_u[:-1]
+    IF = phase_to_if(dphi)
+    logmag = logmag[1:]  # align to IF frames
+    T = logmag.shape[0]
+    if T == 0:
+        raise ValueError(f"No STFT frames after alignment for {entry['path']}")
+
+    max_frames = ctx["max_frames"]
+    if T <= max_frames:
+        idx = slice(None)
+    else:
+        idx = np.linspace(0, T - 1, num=max_frames, dtype=np.int64)
+    logmag_sample = np.ascontiguousarray(logmag[idx], dtype=np.float32)
+    if_sample = np.ascontiguousarray(IF[idx], dtype=np.float32)
+
+    return {
+        "ok": True,
+        "path": entry["path"],
+        "logmag": logmag_sample,
+        "if": if_sample,
+        "frames": int(T),
+    }
+
+
+def _pass1_worker(entry: Dict[str, object]) -> Dict[str, object]:
+    """Wrapper to ensure threadpool limiting exceptions are handled cleanly."""
+    ctx = _PASS1_CTX
+    if ctx is None:
+        raise RuntimeError("Pass1 worker context not initialized.")
+    limiter = ctx.get("threadpool_limits")
+    try:
+        if limiter:
+            with limiter(limits=1):
+                return _pass1_worker_core(entry, ctx)
+        return _pass1_worker_core(entry, ctx)
+    except Exception as exc:
+        return {"ok": False, "path": entry["path"], "err": str(exc)}
+
 def make_splits(items: List[Dict], split_fracs: Dict[str, float], seed: int = 42) -> List[Dict]:
     rng = random.Random(seed)
     items_shuf = items[:]
@@ -228,73 +338,173 @@ def make_splits(items: List[Dict], split_fracs: Dict[str, float], seed: int = 42
         it["split"] = sp
     return items_shuf
 
-def pass1_collect_stats(cfg: dict, manifest: List[Dict]) -> dict:
+def pass1_collect_stats_parallel(cfg: dict, manifest: List[Dict], max_workers: int = 32) -> dict:
     """
-    Primo passaggio: colleziona statistiche globali su log-magnitudine e IF
-    (train set soltanto).
-    - logmag: mean/std globali con clipping ai quantili.
-    - IF: per-bin median/MAD o mean/std (configurabile).
+    Parallel, HPC-ready statistics collection on training split only.
     """
+    # --- Setup ----------------------------------------------------------------
     sr = cfg["sample_rate"]
     n_fft = cfg["n_fft"]
     hop = cfg["hop_length"]
     win_length = cfg["win_length"]
     eps = float(cfg["epsilon"])
 
-    # inizializza collector
-    logmag_stats = RunningStats(
-        clip_quantiles=tuple(cfg["logmag_norm"].get("clip_quantiles", [])) if cfg["logmag_norm"].get("clip_quantiles") else None
-    )
-    if_cfg = cfg["if_norm"]
-    F_bins = n_fft // 2 + 1
-    if_stats = RobustPerBin(
-        n_bins=F_bins,
-        estimator=if_cfg.get("estimator", "mad"),
-        clip_quantiles=tuple(if_cfg.get("clip_quantiles", [])) if if_cfg.get("clip_quantiles") else None
-    )
+    random.seed(cfg.get("split_seed", 42))
+    np.random.seed(cfg.get("split_seed", 42))
 
-    # loop sui file di train
-    for ex in manifest:
-        if ex.get("split") != "train":
-            continue
+    train_items = [ex for ex in manifest if ex.get("split") == "train"]
+    if not train_items:
+        raise RuntimeError("No training items available for statistics collection.")
+    train_items = sorted(train_items, key=lambda ex: (ex["dataset"], ex["id"]))
 
-        # carica e STFT
-        y, _ = load_audio_resample(ex["path"], sr)
-        X = stft_complex(
-            y,
-            n_fft=n_fft,
-            hop=hop,
-            win_length=win_length,
-            window=cfg["window"],
-            center=cfg["center"],
-            pad_mode=cfg["pad_mode"],
-        )  # output: [T,F]
+    ctx_payload = {
+        "sr": sr,
+        "n_fft": n_fft,
+        "hop": hop,
+        "win_length": win_length,
+        "window": cfg["window"],
+        "center": cfg["center"],
+        "pad_mode": cfg["pad_mode"],
+        "eps": eps,
+        "max_frames": 512,
+    }
 
-        mag = np.abs(X)
-        logmag = compute_logmag(mag, eps=eps)
-        phase = np.angle(X)
-        phase_u = unwrap_phase_time(phase)
-        dphi = phase_u[1:] - phase_u[:-1]
-        IF = phase_to_if(dphi)
+    # --- Pool -----------------------------------------------------------------
+    mp_start = "spawn" if sys.platform.startswith("darwin") else "fork"
+    mp_ctx = get_context(mp_start)
+    total = len(train_items)
+    cpu_cap = os.cpu_count() or max_workers
+    max_workers = min(max_workers, cpu_cap, total)
+    chunk_size = max(1, total // (max_workers * 4)) if total >= max_workers else 1
 
-        logmag = logmag[1:]
+    payloads = [{"id": ex["id"], "path": ex["path"]} for ex in train_items]
+    logmag_pool: Optional[np.ndarray] = None
+    if_pool: Optional[np.ndarray] = None
+    log_limit = 1_500_000  # ~1.5M scalar samples
+    if_limit_rows = max(2048, log_limit // (n_fft // 2 + 1))
+    failures: List[Tuple[str, str]] = []
 
-        logmag_stats.update(logmag)
-        if_stats.update(IF)
+    with ProcessPoolExecutor(
+        max_workers=max_workers,
+        mp_context=mp_ctx,
+        initializer=_pass1_worker_initializer,
+        initargs=(ctx_payload,),
+    ) as executor:
+        results = executor.map(_pass1_worker, payloads, chunksize=chunk_size)
+        for res in tqdm(results, total=total, desc="[Pass1] stats", dynamic_ncols=True):
+            if not res["ok"]:
+                failures.append((res["path"], res["err"]))
+                continue
 
-    logmag_stats.finalize()
+            log_sample = res["logmag"].reshape(-1)
+            if_sample = res["if"].reshape(res["if"].shape[0], -1)
+
+            logmag_pool = log_sample if logmag_pool is None else np.concatenate([logmag_pool, log_sample], axis=0)
+            if logmag_pool.size > log_limit:
+                idx = np.random.choice(logmag_pool.size, size=log_limit, replace=False)
+                logmag_pool = logmag_pool[idx]
+
+            if_pool = if_sample if if_pool is None else np.concatenate([if_pool, if_sample], axis=0)
+            if if_pool.shape[0] > if_limit_rows:
+                idx = np.random.choice(if_pool.shape[0], size=if_limit_rows, replace=False)
+                if_pool = if_pool[idx]
+
+    if logmag_pool is None or if_pool is None:
+        raise RuntimeError("No valid samples collected for statistics.")
+
+    if failures:
+        for path, err in failures:
+            print(f"[Pass1][warn] Failed to process {path}: {err}")
+
+    # --- Quantile clipping ----------------------------------------------------
+    log_clip = cfg["logmag_norm"].get("clip_quantiles")
+    if log_clip:
+        q_lo, q_hi = np.quantile(logmag_pool, log_clip)
+        logmag_pool = np.clip(logmag_pool, q_lo, q_hi)
+
+    if_cfg = cfg.get("if_norm", {})
+    if_clip = if_cfg.get("clip_quantiles")
+    if if_clip:
+        q_lo_if, q_hi_if = np.quantile(if_pool, if_clip)
+        if_pool = np.clip(if_pool, q_lo_if, q_hi_if)
+
+    # --- Merge & finalize -----------------------------------------------------
+    log_mean = float(np.mean(logmag_pool, dtype=np.float64))
+    log_std = float(np.std(logmag_pool, dtype=np.float64))
+
+    estimator = if_cfg.get("estimator", "mad").lower()
+    if estimator == "meanstd":
+        center = np.mean(if_pool, axis=0, dtype=np.float64).astype(np.float32)
+        scale = np.std(if_pool, axis=0, dtype=np.float64).astype(np.float32)
+        stat_type = "per_bin_meanstd"
+    else:
+        center = np.median(if_pool, axis=0).astype(np.float32)
+        mad = np.median(np.abs(if_pool - center[None, :]), axis=0)
+        scale = np.maximum(mad * 1.4826, 1e-6).astype(np.float32)
+        stat_type = "per_bin_mad"
 
     stats = {
         "logmag": {
             "type": "global",
-            "mean": float(logmag_stats.mean),
-            "std": float(logmag_stats.std),
-            "clip_quantiles": cfg["logmag_norm"].get("clip_quantiles"),
+            "mean": log_mean,
+            "std": log_std,
+            "clip_quantiles": log_clip,
         },
-        "if_unwrapped": if_stats.to_dict(),
+        "if_unwrapped": {
+            "type": stat_type,
+            "center": center.tolist(),
+            "scale": scale.tolist(),
+            "clip_quantiles": if_clip,
+        },
         "meta": {"sr": sr, "n_fft": n_fft, "hop": hop, "win_length": win_length},
     }
     return stats
+
+
+def pass1_collect_stats(cfg: dict, manifest: List[Dict]) -> dict:
+    """Backward-compatible alias."""
+    return pass1_collect_stats_parallel(cfg, manifest)
+
+
+# Example usage:
+# stats = pass1_collect_stats_parallel(CONFIG, manifest, max_workers=32)
+#
+# SLURM (Leonardo, 32 CPU, 120 GB RAM):
+# #!/bin/bash
+# #SBATCH --job-name=nsynth-pass1
+# #SBATCH --partition=prod
+# #SBATCH --nodes=1
+# #SBATCH --ntasks=1
+# #SBATCH --cpus-per-task=32
+# #SBATCH --mem=120G
+# #SBATCH --time=04:00:00
+# module load python/3.10
+# source /path/to/venv/bin/activate
+# export OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1
+# python - <<'PY'
+# from pathlib import Path
+# from preprocessing import (
+#     CONFIG,
+#     discover_audio,
+#     make_splits,
+#     pass1_collect_stats_parallel,
+#     _save_json,
+# )
+#
+# manifest = make_splits(
+#     discover_audio(
+#         Path(CONFIG["datasets"][0]["root"]).expanduser(),
+#         CONFIG["datasets"][0].get("pattern", "**/*.wav"),
+#         CONFIG["datasets"][0]["name"],
+#         CONFIG.get("min_duration_sec", 0.5),
+#     ),
+#     CONFIG["splits"],
+#     seed=CONFIG["split_seed"],
+# )
+# stats = pass1_collect_stats_parallel(CONFIG, manifest, max_workers=32)
+# stats_path = Path(CONFIG["io"]["manifests_root"]) / f"sr{CONFIG['sample_rate']}" / f"stats_n{CONFIG['n_fft']}_h{CONFIG['hop_length']}.json"
+# _save_json(stats, stats_path)
+# PY
 
 def normalize_features(cfg: dict, stats: dict, logmag: np.ndarray, IF: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
     lm = (logmag - stats["logmag"]["mean"]) / max(stats["logmag"]["std"], 1e-6)
@@ -309,6 +519,148 @@ def normalize_features(cfg: dict, stats: dict, logmag: np.ndarray, IF: np.ndarra
         IFn = np.clip(IFn, -float(clip_val), float(clip_val))
     return lm, IFn
 
+# Pass2 parallel workers ------------------------------------------------------
+_PASS2_CTX: Optional[Dict[str, object]] = None
+
+
+def _pass2_worker_initializer(ctx: Dict[str, object]) -> None:
+    """Prepare global context for pass2 workers."""
+    _torch_set_threads(1)
+    ctx_local = dict(ctx)
+    try:
+        from threadpoolctl import threadpool_limits  # type: ignore
+    except ImportError:
+        ctx_local["threadpool_limits"] = None
+    else:
+        ctx_local["threadpool_limits"] = threadpool_limits
+    ctx_local["window_tensor"] = get_hann_window(ctx_local["win_length"], ctx_local["window"])
+    ctx_local["out_root"] = Path(ctx_local["out_root"])
+    ctx_local["cache_root"] = Path(ctx_local["cache_root"])
+    global _PASS2_CTX
+    _PASS2_CTX = ctx_local
+
+
+def _pass2_worker_core(entry: Dict[str, object], ctx: Dict[str, object]) -> Dict[str, object]:
+    """Full feature extraction, normalization, and disk writes for one item."""
+    y, sr = sf.read(entry["path"], dtype="float32")
+    if y.ndim > 1:
+        y = y.mean(axis=1)
+    if sr != ctx["sr"]:
+        y = librosa.resample(y, orig_sr=sr, target_sr=ctx["sr"], res_type="kaiser_best")
+        sr = ctx["sr"]
+    peak = float(np.max(np.abs(y)) + 1e-9)
+    y = (y / peak).astype(np.float32)
+
+    waveform = torch.from_numpy(y)
+    stft = torch.stft(
+        waveform,
+        n_fft=ctx["n_fft"],
+        hop_length=ctx["hop"],
+        win_length=ctx["win_length"],
+        window=ctx["window_tensor"],
+        center=ctx["center"],
+        pad_mode=ctx["pad_mode"],
+        return_complex=True,
+    )
+    X = stft.transpose(0, 1).cpu().numpy()
+    mag = np.abs(X)
+    logmag = compute_logmag(mag, eps=ctx["eps"])
+    phase = np.angle(X)
+    phase_u = unwrap_phase_time(phase)
+    if phase_u.shape[0] < 2:
+        raise ValueError(f"STFT returned less than two frames for {entry['path']}")
+    dphi = phase_u[1:] - phase_u[:-1]
+    IF = phase_to_if(dphi)
+    logmag = logmag[1:]
+    phase_abs = phase_u[1:]
+    phase0 = phase_u[0]
+    T, F = logmag.shape
+    if T == 0:
+        raise ValueError(f"No STFT frames after alignment for {entry['path']}")
+
+    logmag_n, IF_n = normalize_features(ctx["cfg"], ctx["stats"], logmag, IF)
+    if not np.isfinite(logmag_n).all():
+        raise ValueError(f"Non-finite logmag after normalization for {entry['path']}")
+    if not np.isfinite(IF_n).all():
+        raise ValueError(f"Non-finite IF after normalization for {entry['path']}")
+
+    valid = np.ones((T,), dtype=np.uint8)
+    if ctx["write_fp16"]:
+        logmag_io = logmag_n.astype(np.float16)
+        if_io = IF_n.astype(np.float16)
+    else:
+        logmag_io = logmag_n.astype(np.float32)
+        if_io = IF_n.astype(np.float32)
+    phase_io = phase_abs.astype(np.float32)
+    phase0_io = phase0.astype(np.float32)
+
+    rel_dir = Path(entry["dataset"]) / entry["split"]
+    out_dir = ctx["out_root"] / rel_dir
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out_path = out_dir / f"{entry['id']}.npz"
+    _save_npz(
+        out_path,
+        logmag=logmag_io,
+        if_unwrapped=if_io,
+        valid_frames=valid,
+        phase_abs=phase_io,
+        phase0=phase0_io,
+        sr=np.int32(ctx["sr"]),
+        n_fft=np.int32(ctx["n_fft"]),
+        hop=np.int32(ctx["hop"]),
+        win_length=np.int32(ctx["win_length"]),
+        audio_len=np.int64(len(y)),
+        path_orig=np.array(entry["path"]).astype(np.string_),
+    )
+
+    cache_base = ctx["cache_root"] / rel_dir / entry["id"]
+    cache_base.parent.mkdir(parents=True, exist_ok=True)
+    np.save(cache_base.with_suffix(".M.npy"), logmag_io)
+    np.save(cache_base.with_suffix(".IF.npy"), if_io)
+    np.save(cache_base.with_suffix(".PH.npy"), phase_io)
+    np.save(cache_base.with_suffix(".PH0.npy"), phase0_io)
+
+    index_entry = {
+        "id": entry["id"],
+        "path": str(out_path),
+        "T": int(T),
+        "F": int(F),
+        "split": entry["split"],
+        "dataset": entry["dataset"],
+    }
+    pair_entry = {
+        "id": entry["id"],
+        "dataset": entry["dataset"],
+        "split": entry["split"],
+        "M_path": str(cache_base.with_suffix(".M.npy")),
+        "IF_path": str(cache_base.with_suffix(".IF.npy")),
+        "PHI_path": str(cache_base.with_suffix(".PH.npy")),
+        "phi0_path": str(cache_base.with_suffix(".PH0.npy")),
+        "T": int(T),
+        "F": int(F),
+        "sr": int(ctx["sr"]),
+        "n_fft": int(ctx["n_fft"]),
+        "hop": int(ctx["hop"]),
+        "win_length": int(ctx["win_length"]),
+    }
+    return {"ok": True, "split": entry["split"], "index": index_entry, "pair": pair_entry}
+
+
+def _pass2_worker(entry: Dict[str, object]) -> Dict[str, object]:
+    """Wrapper to guard against worker-side failures."""
+    ctx = _PASS2_CTX
+    if ctx is None:
+        raise RuntimeError("Pass2 worker context not initialized.")
+    limiter = ctx.get("threadpool_limits")
+    try:
+        if limiter:
+            with limiter(limits=1):
+                return _pass2_worker_core(entry, ctx)
+        return _pass2_worker_core(entry, ctx)
+    except Exception as exc:
+        return {"ok": False, "path": entry["path"], "err": str(exc)}
+
+
 def pass2_process_and_write(
     cfg: dict,
     manifest: List[Dict],
@@ -316,6 +668,10 @@ def pass2_process_and_write(
     out_root: Path,
     manifests_root: Path,
 ):
+    """
+    Parallel feature extraction and serialization across the full manifest.
+    """
+    # --- Setup ----------------------------------------------------------------
     sr = cfg["sample_rate"]
     n_fft = cfg["n_fft"]
     hop = cfg["hop_length"]
@@ -323,99 +679,75 @@ def pass2_process_and_write(
     eps = float(cfg["epsilon"])
     write_fp16 = bool(cfg["io"].get("write_fp16", True))
 
-    index = {"train": [], "val": [], "test": []}
+    out_root.mkdir(parents=True, exist_ok=True)
     cache_root_cfg = Path(cfg["io"].get("cache_root", "data/cache_npy")).expanduser()
     cache_root = cache_root_cfg / f"sr{sr}"
     cache_root.mkdir(parents=True, exist_ok=True)
+    manifests_root.mkdir(parents=True, exist_ok=True)
+
+    index: Dict[str, List[Dict[str, object]]] = {"train": [], "val": [], "test": []}
     manifest_pairs: Dict[str, List[Dict[str, object]]] = {"train": [], "val": [], "test": []}
     n_bins = n_fft // 2 + 1
 
-    for ex in manifest:
-        y, _ = load_audio_resample(ex["path"], sr)
-        X = stft_complex(y, n_fft=n_fft, hop=hop, win_length=win_length,
-                         window=cfg["window"], center=cfg["center"], pad_mode=cfg["pad_mode"])
-        mag = np.abs(X)
-        logmag = compute_logmag(mag, eps=eps)
-        phase = np.angle(X)
-        phase_u = unwrap_phase_time(phase)
-        dphi = phase_u[1:] - phase_u[:-1]
-        IF = phase_to_if(dphi)
-        logmag = logmag[1:]
-        phase_abs = phase_u[1:]
-        phase0 = phase_u[0]
-        T, F = logmag.shape
+    total = len(manifest)
+    if total == 0:
+        return
 
-        logmag_n, IF_n = normalize_features(cfg, stats, logmag, IF)
-        if not np.isfinite(logmag_n).all():
-            raise ValueError(f"Non-finite logmag after normalization for {ex['id']}")
-        if not np.isfinite(IF_n).all():
-            raise ValueError(f"Non-finite IF after normalization for {ex['id']}")
-        valid = np.ones((T,), dtype=np.uint8)
-        logmag_io = logmag_n.astype(np.float16) if write_fp16 else logmag_n.astype(np.float32)
-        if_io = IF_n.astype(np.float16) if write_fp16 else IF_n.astype(np.float32)
-        phase_io = phase_abs.astype(np.float32)
-        phase0_io = phase0.astype(np.float32)
+    ctx_payload = {
+        "cfg": cfg,
+        "stats": stats,
+        "sr": sr,
+        "n_fft": n_fft,
+        "hop": hop,
+        "win_length": win_length,
+        "window": cfg["window"],
+        "center": cfg["center"],
+        "pad_mode": cfg["pad_mode"],
+        "eps": eps,
+        "write_fp16": write_fp16,
+        "out_root": str(out_root),
+        "cache_root": str(cache_root),
+    }
 
-        rel_dir = Path(ex["dataset"]) / ex["split"]
-        out_dir = out_root / rel_dir
-        out_path = out_dir / f"{ex['id']}.npz"
-        _save_npz(
-            out_path,
-            logmag=logmag_io,
-            if_unwrapped=if_io,
-            valid_frames=valid,
-            phase_abs=phase_io,
-            phase0=phase0_io,
-            sr=np.int32(sr),
-            n_fft=np.int32(n_fft),
-            hop=np.int32(hop),
-            win_length=np.int32(win_length),
-            audio_len=np.int64(len(y)),
-            path_orig=np.array(ex["path"]).astype(np.string_),
-        )
+    payloads = [
+        {"id": ex["id"], "path": ex["path"], "dataset": ex["dataset"], "split": ex["split"]}
+        for ex in manifest
+    ]
 
-        cache_base = cache_root / rel_dir / ex["id"]
-        cache_base.parent.mkdir(parents=True, exist_ok=True)
-        m_path = cache_base.with_suffix(".M.npy")
-        i_path = cache_base.with_suffix(".IF.npy")
-        p_path = cache_base.with_suffix(".PH.npy")
-        p0_path = cache_base.with_suffix(".PH0.npy")
-        np.save(m_path, logmag_io)
-        np.save(i_path, if_io)
-        np.save(p_path, phase_io)
-        np.save(p0_path, phase0_io)
+    # --- Pool -----------------------------------------------------------------
+    mp_start = "spawn" if sys.platform.startswith("darwin") else "fork"
+    mp_ctx = get_context(mp_start)
+    cpu_cap = os.cpu_count() or 32
+    pool_workers = min(32, cpu_cap, total)
+    chunk_size = max(1, total // (pool_workers * 4)) if total >= pool_workers else 1
+    failures: List[Tuple[str, str]] = []
 
-        index_entry = {
-            "id": ex["id"],
-            "path": str(out_path),
-            "T": int(T),
-            "F": int(F),
-            "split": ex["split"],
-            "dataset": ex["dataset"],
-        }
-        index[ex["split"]].append(index_entry)
+    with ProcessPoolExecutor(
+        max_workers=pool_workers,
+        mp_context=mp_ctx,
+        initializer=_pass2_worker_initializer,
+        initargs=(ctx_payload,),
+    ) as executor:
+        results = executor.map(_pass2_worker, payloads, chunksize=chunk_size)
+        for res in tqdm(results, total=total, desc="[Pass2] processing", dynamic_ncols=True):
+            if not res["ok"]:
+                failures.append((res["path"], res["err"]))
+                continue
+            split = res["split"]
+            index[split].append(res["index"])
+            manifest_pairs[split].append(res["pair"])
 
-        manifest_pairs[ex["split"]].append({
-            "id": ex["id"],
-            "dataset": ex.get("dataset"),
-            "split": ex.get("split"),
-            "M_path": str(m_path),
-            "IF_path": str(i_path),
-            "PHI_path": str(p_path),
-            "phi0_path": str(p0_path),
-            "T": int(T),
-            "F": int(F),
-            "sr": int(sr),
-            "n_fft": int(n_fft),
-            "hop": int(hop),
-            "win_length": int(win_length),
-        })
+    if failures:
+        for path, err in failures:
+            print(f"[Pass2][warn] Failed to process {path}: {err}")
 
+    # --- Manifest write-out ---------------------------------------------------
     idx_root = out_root.parent
     idx_dir = idx_root / f"sr{sr}"
     idx_dir.mkdir(parents=True, exist_ok=True)
+    index_prefix = cfg["io"].get("index_prefix", "index")
     for split, items in index.items():
-        idx_path = idx_dir / f"{CONFIG['io']['index_prefix']}_{split}.jsonl"
+        idx_path = idx_dir / f"{index_prefix}_{split}.jsonl"
         idx_path.parent.mkdir(parents=True, exist_ok=True)
         with idx_path.open("w", encoding="utf-8") as f:
             for it in items:
@@ -492,7 +824,7 @@ def run_preprocess(cfg: dict = CONFIG):
         _save_json([ex for ex in manifest if ex["split"] == split], manifests_root / f"{split}.json")
 
     print("[IFF-AR][preprocess] Pass1: collecting stats on train…")
-    stats = pass1_collect_stats(cfg, manifest)
+    stats = pass1_collect_stats_parallel(cfg, manifest)
     stats_path = manifests_root / f"stats_n{cfg['n_fft']}_h{cfg['hop_length']}.json"
     _save_json(stats, stats_path)
 
