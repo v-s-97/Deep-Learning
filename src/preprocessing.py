@@ -341,7 +341,10 @@ def make_splits(items: List[Dict], split_fracs: Dict[str, float], seed: int = 42
 def pass1_collect_stats_parallel(cfg: dict, manifest: List[Dict], max_workers: int = 32) -> dict:
     """
     Parallel, HPC-ready statistics collection on training split only.
+    Questa versione non accumula tutti i campioni in RAM, ma aggiorna
+    le statistiche in streaming (merge online). Evita OOM su dataset grandi.
     """
+
     # --- Setup ----------------------------------------------------------------
     sr = cfg["sample_rate"]
     n_fft = cfg["n_fft"]
@@ -352,11 +355,13 @@ def pass1_collect_stats_parallel(cfg: dict, manifest: List[Dict], max_workers: i
     random.seed(cfg.get("split_seed", 42))
     np.random.seed(cfg.get("split_seed", 42))
 
+    # Filtra solo i file del train
     train_items = [ex for ex in manifest if ex.get("split") == "train"]
     if not train_items:
         raise RuntimeError("No training items available for statistics collection.")
     train_items = sorted(train_items, key=lambda ex: (ex["dataset"], ex["id"]))
 
+    # Context condiviso tra i worker
     ctx_payload = {
         "sr": sr,
         "n_fft": n_fft,
@@ -369,142 +374,71 @@ def pass1_collect_stats_parallel(cfg: dict, manifest: List[Dict], max_workers: i
         "max_frames": 512,
     }
 
-    # --- Pool -----------------------------------------------------------------
-    mp_start = "spawn" if sys.platform.startswith("darwin") else "fork"
-    mp_ctx = get_context(mp_start)
+    # Collector streaming
+    rs = RunningStats(
+        clip_quantiles=tuple(cfg["logmag_norm"].get("clip_quantiles", []))
+        if cfg["logmag_norm"].get("clip_quantiles")
+        else None
+    )
+    if_cfg = cfg["if_norm"]
+    rb = RobustPerBin(
+        n_bins=n_fft // 2 + 1,
+        estimator=if_cfg.get("estimator", "mad"),
+        clip_quantiles=tuple(if_cfg.get("clip_quantiles", []))
+        if if_cfg.get("clip_quantiles")
+        else None,
+    )
+
+    failures: List[Tuple[str, str]] = []
+
+    # --- Parallel pool ---------------------------------------------------------
+    mp_ctx = get_context("fork")
     total = len(train_items)
     cpu_cap = os.cpu_count() or max_workers
     max_workers = min(max_workers, cpu_cap, total)
     chunk_size = max(1, total // (max_workers * 4)) if total >= max_workers else 1
 
-    payloads = [{"id": ex["id"], "path": ex["path"]} for ex in train_items]
-    logmag_pool: Optional[np.ndarray] = None
-    if_pool: Optional[np.ndarray] = None
-    log_limit = 1_500_000  # ~1.5M scalar samples
-    if_limit_rows = max(2048, log_limit // (n_fft // 2 + 1))
-    failures: List[Tuple[str, str]] = []
-
+    print(f"[Pass1] Starting streaming stats collection with {max_workers} workers...")
     with ProcessPoolExecutor(
         max_workers=max_workers,
         mp_context=mp_ctx,
         initializer=_pass1_worker_initializer,
         initargs=(ctx_payload,),
     ) as executor:
-        results = executor.map(_pass1_worker, payloads, chunksize=chunk_size)
+        results = executor.map(_pass1_worker, train_items, chunksize=chunk_size)
         for res in tqdm(results, total=total, desc="[Pass1] stats", dynamic_ncols=True):
             if not res["ok"]:
                 failures.append((res["path"], res["err"]))
                 continue
+            rs.update(res["logmag"])
+            rb.update(res["if"])
 
-            log_sample = res["logmag"].reshape(-1)
-            if_sample = res["if"].reshape(res["if"].shape[0], -1)
-
-            logmag_pool = log_sample if logmag_pool is None else np.concatenate([logmag_pool, log_sample], axis=0)
-            if logmag_pool.size > log_limit:
-                idx = np.random.choice(logmag_pool.size, size=log_limit, replace=False)
-                logmag_pool = logmag_pool[idx]
-
-            if_pool = if_sample if if_pool is None else np.concatenate([if_pool, if_sample], axis=0)
-            if if_pool.shape[0] > if_limit_rows:
-                idx = np.random.choice(if_pool.shape[0], size=if_limit_rows, replace=False)
-                if_pool = if_pool[idx]
-
-    if logmag_pool is None or if_pool is None:
-        raise RuntimeError("No valid samples collected for statistics.")
-
-    if failures:
-        for path, err in failures:
-            print(f"[Pass1][warn] Failed to process {path}: {err}")
-
-    # --- Quantile clipping ----------------------------------------------------
-    log_clip = cfg["logmag_norm"].get("clip_quantiles")
-    if log_clip:
-        q_lo, q_hi = np.quantile(logmag_pool, log_clip)
-        logmag_pool = np.clip(logmag_pool, q_lo, q_hi)
-
-    if_cfg = cfg.get("if_norm", {})
-    if_clip = if_cfg.get("clip_quantiles")
-    if if_clip:
-        q_lo_if, q_hi_if = np.quantile(if_pool, if_clip)
-        if_pool = np.clip(if_pool, q_lo_if, q_hi_if)
-
-    # --- Merge & finalize -----------------------------------------------------
-    log_mean = float(np.mean(logmag_pool, dtype=np.float64))
-    log_std = float(np.std(logmag_pool, dtype=np.float64))
-
-    estimator = if_cfg.get("estimator", "mad").lower()
-    if estimator == "meanstd":
-        center = np.mean(if_pool, axis=0, dtype=np.float64).astype(np.float32)
-        scale = np.std(if_pool, axis=0, dtype=np.float64).astype(np.float32)
-        stat_type = "per_bin_meanstd"
-    else:
-        center = np.median(if_pool, axis=0).astype(np.float32)
-        mad = np.median(np.abs(if_pool - center[None, :]), axis=0)
-        scale = np.maximum(mad * 1.4826, 1e-6).astype(np.float32)
-        stat_type = "per_bin_mad"
-
+    # --- Finalizzazione e merge -------------------------------------------------
+    rs.finalize()
     stats = {
         "logmag": {
             "type": "global",
-            "mean": log_mean,
-            "std": log_std,
-            "clip_quantiles": log_clip,
+            "mean": float(rs.mean),
+            "std": float(rs.std),
+            "clip_quantiles": cfg["logmag_norm"].get("clip_quantiles"),
         },
-        "if_unwrapped": {
-            "type": stat_type,
-            "center": center.tolist(),
-            "scale": scale.tolist(),
-            "clip_quantiles": if_clip,
-        },
+        "if_unwrapped": rb.to_dict(),
         "meta": {"sr": sr, "n_fft": n_fft, "hop": hop, "win_length": win_length},
     }
+
+    if failures:
+        print(f"[Pass1] {len(failures)} files failed during processing:")
+        for path, err in failures[:5]:
+            print(f"   - {path}: {err}")
+
+    print("[Pass1] Streaming stats collection completed successfully.")
     return stats
+
 
 
 def pass1_collect_stats(cfg: dict, manifest: List[Dict]) -> dict:
     """Backward-compatible alias."""
     return pass1_collect_stats_parallel(cfg, manifest)
-
-
-# Example usage:
-# stats = pass1_collect_stats_parallel(CONFIG, manifest, max_workers=32)
-#
-# SLURM (Leonardo, 32 CPU, 120 GB RAM):
-# #!/bin/bash
-# #SBATCH --job-name=nsynth-pass1
-# #SBATCH --partition=prod
-# #SBATCH --nodes=1
-# #SBATCH --ntasks=1
-# #SBATCH --cpus-per-task=32
-# #SBATCH --mem=120G
-# #SBATCH --time=04:00:00
-# module load python/3.10
-# source /path/to/venv/bin/activate
-# export OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1
-# python - <<'PY'
-# from pathlib import Path
-# from preprocessing import (
-#     CONFIG,
-#     discover_audio,
-#     make_splits,
-#     pass1_collect_stats_parallel,
-#     _save_json,
-# )
-#
-# manifest = make_splits(
-#     discover_audio(
-#         Path(CONFIG["datasets"][0]["root"]).expanduser(),
-#         CONFIG["datasets"][0].get("pattern", "**/*.wav"),
-#         CONFIG["datasets"][0]["name"],
-#         CONFIG.get("min_duration_sec", 0.5),
-#     ),
-#     CONFIG["splits"],
-#     seed=CONFIG["split_seed"],
-# )
-# stats = pass1_collect_stats_parallel(CONFIG, manifest, max_workers=32)
-# stats_path = Path(CONFIG["io"]["manifests_root"]) / f"sr{CONFIG['sample_rate']}" / f"stats_n{CONFIG['n_fft']}_h{CONFIG['hop_length']}.json"
-# _save_json(stats, stats_path)
-# PY
 
 def normalize_features(cfg: dict, stats: dict, logmag: np.ndarray, IF: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
     lm = (logmag - stats["logmag"]["mean"]) / max(stats["logmag"]["std"], 1e-6)
