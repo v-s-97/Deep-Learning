@@ -50,7 +50,16 @@ class IFFARModel(nn.Module):
 
         self.F_bins = F_bins
 
-    def forward_train(self, M_ctx, IF_ctx, M_target, IF_target, stats, *, phi_ctx_last: torch.Tensor | None = None, mean_mode: bool = True):
+    def forward_train(self,
+                      M_ctx,
+                      IF_ctx,
+                      M_target,
+                      IF_target,
+                      stats,
+                      *,
+                      phi_ctx_last: torch.Tensor | None = None,
+                      mean_mode: bool = True,
+                      reconstruct_waveform: bool = False):
         """Forward pass su un singolo step autoregressivo."""
         C, film_params = self.encoder(M_ctx, IF_ctx)
 
@@ -61,7 +70,7 @@ class IFFARModel(nn.Module):
         IF_pred, nll = self.if_flow(film_params, y_target=IF_target, mean_mode=mean_mode)
 
         X_hat, phi, y_hat = self.recon.reconstruct_chunk(
-            M_pred, IF_pred, stats, return_waveform=True, phi0=phi_ctx_last
+            M_pred, IF_pred, stats, return_waveform=reconstruct_waveform, phi0=phi_ctx_last
         )
 
         return {

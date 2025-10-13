@@ -425,7 +425,16 @@ def train():
                         phi_ctx_s = torch.cat([PHI_ctx, PHI_tgt[:, :s]], dim=1)[:, -L:]
                     phi_last = phi_ctx_s[:, -1]
 
-                    out = base_model.forward_train(M_ctx_s, IF_ctx_s, M_tgt[:, s], IF_tgt[:, s], stats, phi_ctx_last=phi_last, mean_mode=mean_mode_flag)
+                    out = base_model.forward_train(
+                        M_ctx_s,
+                        IF_ctx_s,
+                        M_tgt[:, s],
+                        IF_tgt[:, s],
+                        stats,
+                        phi_ctx_last=phi_last,
+                        mean_mode=mean_mode_flag,
+                        reconstruct_waveform=False,
+                    )
 
                     losses = loss_fn(flow_nll=out["nll"], if_pred=out["IF_pred"], if_tgt=IF_tgt[:, s],
                                      m_pred=out["M_pred"], m_tgt=M_tgt[:, s], X_hat=out["X_hat"],
@@ -565,7 +574,16 @@ def train():
                                 phi_ctx_s = torch.cat([PHI_ctx, PHI_tgt[:, :s]], dim=1)[:, -L:]
                             phi_last = phi_ctx_s[:, -1]
 
-                            out = base_model.forward_train(M_ctx_s, IF_ctx_s, M_tgt[:, s], IF_tgt[:, s], stats, phi_ctx_last=phi_last, mean_mode=True)
+                            out = base_model.forward_train(
+                                M_ctx_s,
+                                IF_ctx_s,
+                                M_tgt[:, s],
+                                IF_tgt[:, s],
+                                stats,
+                                phi_ctx_last=phi_last,
+                                mean_mode=True,
+                                reconstruct_waveform=False,
+                            )
 
                             losses = loss_fn(flow_nll=out["nll"], if_pred=out["IF_pred"], if_tgt=IF_tgt[:, s],
                                              m_pred=out["M_pred"], m_tgt=M_tgt[:, s], X_hat=out["X_hat"],
