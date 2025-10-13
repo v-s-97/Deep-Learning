@@ -20,9 +20,9 @@ import torch
 CONFIG = {
     # SR & STFT
     "sample_rate": 16000,
-    "n_fft": 1024,
-    "hop_length": 256,
-    "win_length": 1024,
+    "n_fft": 2048,
+    "hop_length": 512,
+    "win_length": 2048,
     "window": "hann",
     "center": True,
     "pad_mode": "reflect",
