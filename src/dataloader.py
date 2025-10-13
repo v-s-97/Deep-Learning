@@ -368,6 +368,8 @@ def make_dataloader(
     file_shuffle: bool = True,
     use_half: bool = True,
     worker_seed: int = 1234,
+    sampler: Optional[torch.utils.data.Sampler] = None,
+    drop_last: bool = True,
 ) -> Tuple[DataLoader, Dataset]:
     if num_workers is None:
         cpu = os.cpu_count() or 8
@@ -386,13 +388,15 @@ def make_dataloader(
     loader_args = dict(
         dataset=ds,
         batch_size=batch_size,
-        shuffle=False,
+        shuffle=False if sampler is None else False,
         num_workers=num_workers,
         pin_memory=pin_memory,
         collate_fn=packed_collate,
-        drop_last=True,
+        drop_last=drop_last,
     )
-    
+    if sampler is not None:
+        loader_args["sampler"] = sampler
+
     if num_workers > 0:
         if prefetch_factor is not None:
             loader_args["prefetch_factor"] = prefetch_factor
