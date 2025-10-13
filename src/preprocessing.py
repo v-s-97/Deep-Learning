@@ -425,7 +425,7 @@ def pass2_process_and_write(
             hop=np.int32(hop),
             win_length=np.int32(win_length),
             audio_len=np.int64(len(y)),
-            path_orig=np.array(ex["path"]).astype(np.string_),
+            path_orig=np.array(ex["path"]).astype(np.str_),
         )
 
         cache_base = cache_root / rel_dir / ex["id"]
