@@ -183,7 +183,7 @@ def build_manifest(
             if not PH0_path.exists():
                 PH0_path = None
             try:
-                M = np.load(M_path, mmap_mode="r")
+                M = np.load(M_path, allow_pickle=False)
                 T, F = M.shape
             except Exception as e:
                 print(f"[build_manifest][warn] Skipping {M_path}: {e}")
@@ -218,9 +218,9 @@ def build_manifest(
 
 def _open_memmap(path: str) -> np.memmap:
     try:
-        return np.load(path, mmap_mode="r+")
+        return np.load(path, allow_pickle=False)
     except Exception:
-        return np.load(path, mmap_mode="r")
+        return np.load(path, allow_pickle=False)
 
 
 class PackedWindowsDataset(Dataset):
@@ -475,8 +475,8 @@ class ShardedIterable(IterableDataset):
 
     def __iter__(self):
         for M_path, IF_path in self.pairs:
-            Mmm  = np.load(M_path, mmap_mode="r")
-            IFmm = np.load(IF_path, mmap_mode="r")
+            Mmm  = np.load(M_path, allow_pickle=False)
+            IFmm = np.load(IF_path, allow_pickle=False)
             yield from self._yield_file(Mmm, IFmm)
 
 def make_iter_loader_from_manifest(
