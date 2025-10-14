@@ -41,13 +41,13 @@ CONFIG: Dict = {
     },
 
     "data": { 
-        "L": 48,
-        "K": 16,
-        "batch_size": 64,
+        "L": 24,
+        "K": 4,
+        "batch_size": 32,
         "stride": 128,
-        "num_workers": 10,
-        "max_train_items": False,
-        "max_val_items": False,
+        "num_workers": 2,
+        "max_train_items": 10000,
+        "max_val_items": 10000,
     },
 
     "model": {
@@ -61,7 +61,7 @@ CONFIG: Dict = {
         "flow_hidden": 256,
         "flow_kernel_size": 5,
         "flow_use_tanh_scale": True,
-        "flow_scale_factor": 1.2,
+        "flow_scale_factor": 1.0,
         
         "mag_hidden": 256,
         "mag_use_prev_skip": True,
@@ -77,19 +77,19 @@ CONFIG: Dict = {
     },
 
     "optim": {
-        "epochs": 150,
+        "epochs": 10,
         "lr": 3e-4,
         "weight_decay": 0.01,
         "betas": (0.9, 0.98),
-        "grad_accum": 1,
+        "grad_accum": 4,
         "max_grad_norm": 1.0,
-        "warmup_steps": 2000,
+        "warmup_steps": 1000,
     },
 
     "loss": {
         "lambda_if": 1.0,
         "lambda_if_reg": 0.25,   
-        "lambda_mag": 20.0,
+        "lambda_mag": 10.0,
         "lambda_cons": 0.75,
         "lambda_overlap": 0.5,
         "lambda_time": 0.05,
