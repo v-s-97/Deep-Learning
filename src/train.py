@@ -31,12 +31,12 @@ torch.set_float32_matmul_precision("high")
 
 CONFIG: Dict = {
     "paths": {
-        "train_data_root": "data/processed/sr16000/nsynth/train",
-        "val_data_root":   "data/processed/sr16000/nsynth/val",
-        "manifest_train":  "manifests/sr16000/train_pairs.json",
-        "manifest_val":    "manifests/sr16000/val_pairs.json",
-        "stats_path":      "manifests/sr16000/stats_n1024_h256.json",
-        "ckpt_dir":        "checkpoints",
+        "train_data_root": "/leonardo_work/try25_santini/Deep-Learning/data/processed/sr16000/nsynth/train",
+        "val_data_root":   "/leonardo_work/try25_santini/Deep-Learning/data/processed/sr16000/nsynth/val",
+        "manifest_train":  "/leonardo_work/try25_santini/Deep-Learning/manifests/sr16000/train_pairs.json",
+        "manifest_val":    "/leonardo_work/try25_santini/Deep-Learning/manifests/sr16000/val_pairs.json",
+        "stats_path":      "/leonardo_work/try25_santini/Deep-Learning/manifests/sr16000/stats_n1024_h256.json",
+        "ckpt_dir":        "/leonardo_work/try25_santini/Deep-Learning/checkpoints",
         "resume_ckpt":     "",
     },
 
