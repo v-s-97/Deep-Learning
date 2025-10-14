@@ -83,6 +83,27 @@ class IFFARModel(nn.Module):
             "mag_aux": mag_out,
         }
 
+    def forward(self,
+                M_ctx,
+                IF_ctx,
+                M_target,
+                IF_target,
+                stats,
+                *,
+                phi_ctx_last: torch.Tensor | None = None,
+                mean_mode: bool = True,
+                reconstruct_waveform: bool = False):
+        return self.forward_train(
+            M_ctx,
+            IF_ctx,
+            M_target,
+            IF_target,
+            stats,
+            phi_ctx_last=phi_ctx_last,
+            mean_mode=mean_mode,
+            reconstruct_waveform=reconstruct_waveform,
+        )
+
     @torch.no_grad()
     def forward_eval(self,
                      M_ctx: torch.Tensor,
