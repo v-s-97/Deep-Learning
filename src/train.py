@@ -230,6 +230,9 @@ def _prepare_tmpdir():
 class HybridConfig(dict):
     def __init__(self, d: dict): super().__init__(d); [setattr(self, k, v) for k, v in d.items()]
 
+def _unwrap_ddp(module: nn.Module) -> nn.Module:
+    return module.module if isinstance(module, DDP) else module
+
 def build_model(F_bins: int, device: torch.device) -> IFFARModel:
     m = CONFIG["model"]
     enc_cfg = HybridConfig({
@@ -372,6 +375,8 @@ def train():
     model = build_model(F_bins, dev)
     if dist_ctx.is_distributed:
         model = DDP(model, device_ids=[dist_ctx.local_rank], output_device=dist_ctx.local_rank, broadcast_buffers=False)
+    model_core = _unwrap_ddp(model)
+    recon = model_core.recon
     optimizer = build_optimizer(model)
     loss_fn = build_loss()
 
@@ -465,9 +470,9 @@ def train():
 
                 M_pred_seq = torch.cat(M_preds, dim=1)
                 IF_pred_seq = torch.cat(IF_preds, dim=1)
-                X_pred_seq, phi_seq_pred, y_pred_seq = model.recon.reconstruct_chunk(M_pred_seq, IF_pred_seq, stats, return_waveform=False, phi0=phi0_chunk)
+                X_pred_seq, phi_seq_pred, y_pred_seq = recon.reconstruct_chunk(M_pred_seq, IF_pred_seq, stats, return_waveform=False, phi0=phi0_chunk)
                 with torch.no_grad():
-                    _, phi_seq_gt, y_ref_seq = model.recon.reconstruct_chunk(M_tgt, IF_tgt, stats, return_waveform=False, phi0=phi0_chunk)
+                    _, phi_seq_gt, y_ref_seq = recon.reconstruct_chunk(M_tgt, IF_tgt, stats, return_waveform=False, phi0=phi0_chunk)
 
                 overlap_term = None
                 if phi_seq_pred is not None:
@@ -605,9 +610,9 @@ def train():
 
                         M_pred_seq = torch.cat(M_preds, dim=1)
                         IF_pred_seq = torch.cat(IF_preds, dim=1)
-                        X_pred_seq, phi_seq_pred, y_pred_seq = model.recon.reconstruct_chunk(M_pred_seq, IF_pred_seq, stats, return_waveform=False, phi0=phi0_chunk)
+                        X_pred_seq, phi_seq_pred, y_pred_seq = recon.reconstruct_chunk(M_pred_seq, IF_pred_seq, stats, return_waveform=False, phi0=phi0_chunk)
                         with torch.no_grad():
-                            _, phi_seq_gt, y_ref_seq = model.recon.reconstruct_chunk(M_tgt, IF_tgt, stats, return_waveform=False, phi0=phi0_chunk)
+                            _, phi_seq_gt, y_ref_seq = recon.reconstruct_chunk(M_tgt, IF_tgt, stats, return_waveform=False, phi0=phi0_chunk)
 
                         overlap_term = None
                         if phi_seq_pred is not None:
