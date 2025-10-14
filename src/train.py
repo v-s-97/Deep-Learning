@@ -44,10 +44,10 @@ CONFIG: Dict = {
         "L": 24,
         "K": 4,
         "batch_size": 32,
-        "stride": 128,
-        "num_workers": 2,
-        "max_train_items": 10000,
-        "max_val_items": 10000,
+        "stride": 64,
+        "num_workers": 4,
+        "max_train_items": False,
+        "max_val_items": False,
     },
 
     "model": {
@@ -77,7 +77,7 @@ CONFIG: Dict = {
     },
 
     "optim": {
-        "epochs": 10,
+        "epochs": 150,
         "lr": 3e-4,
         "weight_decay": 0.01,
         "betas": (0.9, 0.98),
