@@ -31,12 +31,12 @@ torch.set_float32_matmul_precision("high")
 
 CONFIG: Dict = {
     "paths": {
-        "train_data_root": "/leonardo_work/try25_santini/Deep-Learning/data/processed/sr16000/nsynth/train",
-        "val_data_root":   "/leonardo_work/try25_santini/Deep-Learning/data/processed/sr16000/nsynth/val",
-        "manifest_train":  "/leonardo_work/try25_santini/Deep-Learning/manifests/sr16000/train_pairs.json",
-        "manifest_val":    "/leonardo_work/try25_santini/Deep-Learning/manifests/sr16000/val_pairs.json",
-        "stats_path":      "/leonardo_work/try25_santini/Deep-Learning/manifests/sr16000/stats_n1024_h256.json",
-        "ckpt_dir":        "/leonardo_work/try25_santini/Deep-Learning/checkpoints",
+        "train_data_root": "data/processed/sr16000/nsynth/train",
+        "val_data_root":   "data/processed/sr16000/nsynth/val",
+        "manifest_train":  "manifests/sr16000/train_pairs.json",
+        "manifest_val":    "manifests/sr16000/val_pairs.json",
+        "stats_path":      "manifests/sr16000/stats_n1024_h256.json",
+        "ckpt_dir":        "checkpoints",
         "resume_ckpt":     "",
     },
 
@@ -46,6 +46,8 @@ CONFIG: Dict = {
         "batch_size": 64,
         "stride": 128,
         "num_workers": 10,
+        "max_train_items": False,
+        "max_val_items": False,
     },
 
     "model": {
@@ -281,9 +283,30 @@ def train():
     world_size = dist_ctx.world_size
     global_batch = per_gpu_batch * world_size if dist_ctx.is_distributed else per_gpu_batch
 
+    def _resolve_item_limit(value, label):
+        if value is None or value is False:
+            return None
+        try:
+            limit = int(value)
+        except (TypeError, ValueError):
+            log_rank0(f"[data] Ignoro {label} (valore non valido: {value})", logger=tqdm.write)
+            return None
+        if limit <= 0:
+            log_rank0(f"[data] Ignoro {label} (valore <= 0: {limit})", logger=tqdm.write)
+            return None
+        return limit
+
+    max_train_items = _resolve_item_limit(CONFIG["data"].get("max_train_items"), "max_train_items")
+    max_val_items = _resolve_item_limit(CONFIG["data"].get("max_val_items"), "max_val_items")
+
     log_rank0(f"[setup] Distributed: {dist_ctx.is_distributed} (rank {dist_ctx.rank}/{world_size})", logger=tqdm.write)
     log_rank0(f"[setup] Device: {dev}, mixed precision: {CONFIG['amp']['dtype']}", logger=tqdm.write)
     log_rank0(f"[setup] Batch size per GPU: {per_gpu_batch}, global: {global_batch}, L={L}, K={K}", logger=tqdm.write)
+    if is_rank0():
+        if max_train_items is not None:
+            log_rank0(f"[data] Uso max {max_train_items} finestre per il train", logger=tqdm.write)
+        if max_val_items is not None:
+            log_rank0(f"[data] Uso max {max_val_items} finestre per la val", logger=tqdm.write)
 
     P = CONFIG["paths"]
     stats = _load_json(P["stats_path"])
@@ -302,6 +325,7 @@ def train():
         K=K,
         stride=stride,
         max_items_per_file=None,
+        max_total_items=max_train_items,
         file_shuffle=True,
         use_half=True,
         seed=worker_seed,
@@ -312,6 +336,7 @@ def train():
         K=K,
         stride=stride,
         max_items_per_file=None,
+        max_total_items=max_val_items,
         file_shuffle=True,
         use_half=True,
         seed=worker_seed,
@@ -347,7 +372,6 @@ def train():
     model = build_model(F_bins, dev)
     if dist_ctx.is_distributed:
         model = DDP(model, device_ids=[dist_ctx.local_rank], output_device=dist_ctx.local_rank, broadcast_buffers=False)
-    base_model = model.module if isinstance(model, DDP) else model
     optimizer = build_optimizer(model)
     loss_fn = build_loss()
 
@@ -425,16 +449,7 @@ def train():
                         phi_ctx_s = torch.cat([PHI_ctx, PHI_tgt[:, :s]], dim=1)[:, -L:]
                     phi_last = phi_ctx_s[:, -1]
 
-                    out = base_model.forward_train(
-                        M_ctx_s,
-                        IF_ctx_s,
-                        M_tgt[:, s],
-                        IF_tgt[:, s],
-                        stats,
-                        phi_ctx_last=phi_last,
-                        mean_mode=mean_mode_flag,
-                        reconstruct_waveform=False,
-                    )
+                    out = model.forward_train(M_ctx_s, IF_ctx_s, M_tgt[:, s], IF_tgt[:, s], stats, phi_ctx_last=phi_last, mean_mode=mean_mode_flag)
 
                     losses = loss_fn(flow_nll=out["nll"], if_pred=out["IF_pred"], if_tgt=IF_tgt[:, s],
                                      m_pred=out["M_pred"], m_tgt=M_tgt[:, s], X_hat=out["X_hat"],
@@ -450,9 +465,9 @@ def train():
 
                 M_pred_seq = torch.cat(M_preds, dim=1)
                 IF_pred_seq = torch.cat(IF_preds, dim=1)
-                X_pred_seq, phi_seq_pred, y_pred_seq = base_model.recon.reconstruct_chunk(M_pred_seq, IF_pred_seq, stats, return_waveform=compute_wave, phi0=phi0_chunk)
+                X_pred_seq, phi_seq_pred, y_pred_seq = model.recon.reconstruct_chunk(M_pred_seq, IF_pred_seq, stats, return_waveform=compute_wave, phi0=phi0_chunk)
                 with torch.no_grad():
-                    _, phi_seq_gt, y_ref_seq = base_model.recon.reconstruct_chunk(M_tgt, IF_tgt, stats, return_waveform=compute_wave, phi0=phi0_chunk)
+                    _, phi_seq_gt, y_ref_seq = model.recon.reconstruct_chunk(M_tgt, IF_tgt, stats, return_waveform=compute_wave, phi0=phi0_chunk)
 
                 overlap_term = None
                 if phi_seq_pred is not None:
@@ -574,16 +589,7 @@ def train():
                                 phi_ctx_s = torch.cat([PHI_ctx, PHI_tgt[:, :s]], dim=1)[:, -L:]
                             phi_last = phi_ctx_s[:, -1]
 
-                            out = base_model.forward_train(
-                                M_ctx_s,
-                                IF_ctx_s,
-                                M_tgt[:, s],
-                                IF_tgt[:, s],
-                                stats,
-                                phi_ctx_last=phi_last,
-                                mean_mode=True,
-                                reconstruct_waveform=False,
-                            )
+                            out = model.forward_train(M_ctx_s, IF_ctx_s, M_tgt[:, s], IF_tgt[:, s], stats, phi_ctx_last=phi_last, mean_mode=True)
 
                             losses = loss_fn(flow_nll=out["nll"], if_pred=out["IF_pred"], if_tgt=IF_tgt[:, s],
                                              m_pred=out["M_pred"], m_tgt=M_tgt[:, s], X_hat=out["X_hat"],
@@ -599,9 +605,9 @@ def train():
 
                         M_pred_seq = torch.cat(M_preds, dim=1)
                         IF_pred_seq = torch.cat(IF_preds, dim=1)
-                        X_pred_seq, phi_seq_pred, y_pred_seq = base_model.recon.reconstruct_chunk(M_pred_seq, IF_pred_seq, stats, return_waveform=compute_wave_val, phi0=phi0_chunk)
+                        X_pred_seq, phi_seq_pred, y_pred_seq = model.recon.reconstruct_chunk(M_pred_seq, IF_pred_seq, stats, return_waveform=compute_wave_val, phi0=phi0_chunk)
                         with torch.no_grad():
-                            _, phi_seq_gt, y_ref_seq = base_model.recon.reconstruct_chunk(M_tgt, IF_tgt, stats, return_waveform=compute_wave_val, phi0=phi0_chunk)
+                            _, phi_seq_gt, y_ref_seq = model.recon.reconstruct_chunk(M_tgt, IF_tgt, stats, return_waveform=compute_wave_val, phi0=phi0_chunk)
 
                         overlap_term = None
                         if phi_seq_pred is not None:
