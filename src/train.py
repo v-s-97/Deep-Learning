@@ -465,9 +465,9 @@ def train():
 
                 M_pred_seq = torch.cat(M_preds, dim=1)
                 IF_pred_seq = torch.cat(IF_preds, dim=1)
-                X_pred_seq, phi_seq_pred, y_pred_seq = model.recon.reconstruct_chunk(M_pred_seq, IF_pred_seq, stats, return_waveform=compute_wave, phi0=phi0_chunk)
+                X_pred_seq, phi_seq_pred, y_pred_seq = model.recon.reconstruct_chunk(M_pred_seq, IF_pred_seq, stats, return_waveform=False, phi0=phi0_chunk)
                 with torch.no_grad():
-                    _, phi_seq_gt, y_ref_seq = model.recon.reconstruct_chunk(M_tgt, IF_tgt, stats, return_waveform=compute_wave, phi0=phi0_chunk)
+                    _, phi_seq_gt, y_ref_seq = model.recon.reconstruct_chunk(M_tgt, IF_tgt, stats, return_waveform=False, phi0=phi0_chunk)
 
                 overlap_term = None
                 if phi_seq_pred is not None:
@@ -605,9 +605,9 @@ def train():
 
                         M_pred_seq = torch.cat(M_preds, dim=1)
                         IF_pred_seq = torch.cat(IF_preds, dim=1)
-                        X_pred_seq, phi_seq_pred, y_pred_seq = model.recon.reconstruct_chunk(M_pred_seq, IF_pred_seq, stats, return_waveform=compute_wave_val, phi0=phi0_chunk)
+                        X_pred_seq, phi_seq_pred, y_pred_seq = model.recon.reconstruct_chunk(M_pred_seq, IF_pred_seq, stats, return_waveform=False, phi0=phi0_chunk)
                         with torch.no_grad():
-                            _, phi_seq_gt, y_ref_seq = model.recon.reconstruct_chunk(M_tgt, IF_tgt, stats, return_waveform=compute_wave_val, phi0=phi0_chunk)
+                            _, phi_seq_gt, y_ref_seq = model.recon.reconstruct_chunk(M_tgt, IF_tgt, stats, return_waveform=False, phi0=phi0_chunk)
 
                         overlap_term = None
                         if phi_seq_pred is not None:
