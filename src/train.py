@@ -9,6 +9,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 import torch
+import torch.multiprocessing as mp
 import torch.nn as nn
 import torch.distributed as dist
 from torch.nn.parallel import DistributedDataParallel as DDP
@@ -28,6 +29,11 @@ torch.backends.cudnn.deterministic = False
 torch.backends.cuda.matmul.allow_tf32 = True
 torch.backends.cudnn.allow_tf32 = True
 torch.set_float32_matmul_precision("high")
+
+try:
+    mp.set_sharing_strategy("file_system")
+except RuntimeError as exc:
+    warnings.warn(f"[mp] Unable to set sharing strategy to file_system ({exc}); continuing with default.")
 
 CONFIG: Dict = {
     "paths": {
