@@ -238,6 +238,7 @@ class PackedWindowsDataset(Dataset):
         K: int,
         stride: int = 1,
         max_items_per_file: Optional[int] = None,
+        max_total_items: Optional[int] = None,
         file_shuffle: bool = True,
         use_half: bool = True,
         seed: int = 1234,
@@ -256,6 +257,9 @@ class PackedWindowsDataset(Dataset):
         self.K = int(K)
         self.stride = int(stride)
         self.max_items_per_file = max_items_per_file
+        self.max_total_items = int(max_total_items) if max_total_items is not None else None
+        if self.max_total_items is not None and self.max_total_items <= 0:
+            self.max_total_items = None
         self.use_half = use_half
 
         self.index: List[Tuple[int, int]] = []
@@ -268,7 +272,14 @@ class PackedWindowsDataset(Dataset):
             if max_items_per_file is not None:
                 npos = min(npos, max_items_per_file)
             starts = np.arange(0, npos * self.stride, self.stride, dtype=np.int64)
+            if self.max_total_items is not None:
+                remaining = self.max_total_items - len(self.index)
+                if remaining <= 0:
+                    break
+                starts = starts[:remaining]
             self.index.extend([(i, int(s)) for s in starts])
+            if self.max_total_items is not None and len(self.index) >= self.max_total_items:
+                break
 
         self._worker_local_cache: Optional[Dict[str, Dict[str, np.memmap]]] = None
 
@@ -361,6 +372,7 @@ def make_dataloader(
     batch_size: int = 2,
     stride: int = 1,
     max_items_per_file: Optional[int] = None,
+    max_total_items: Optional[int] = None,
     num_workers: Optional[int] = None,
     pin_memory: bool = False,
     prefetch_factor: int = 6,
@@ -380,6 +392,7 @@ def make_dataloader(
         L=L, K=K,
         stride=stride,
         max_items_per_file=max_items_per_file,
+        max_total_items=max_total_items,
         file_shuffle=file_shuffle,
         use_half=use_half,
         seed=worker_seed,
