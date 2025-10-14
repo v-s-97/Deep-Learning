@@ -5,6 +5,7 @@ from typing import Dict, Any, List, Tuple, Optional, Iterable
 
 import numpy as np
 import torch
+import warnings
 from torch.utils.data import Dataset, DataLoader, IterableDataset, get_worker_info
 
 M_ALIASES = [
@@ -216,11 +217,20 @@ def build_manifest(
     return manifest
 
 
-def _open_memmap(path: str) -> np.memmap:
-    try:
-        return np.load(path, mmap_mode="r+")
-    except Exception:
-        return np.load(path, mmap_mode="r")
+_MEMMAP_FALLBACK_WARNED: set[str] = set()
+
+def _open_memmap(path: str) -> np.ndarray:
+    load_kwargs = {"allow_pickle": False}
+    for mode in ("r+", "r"):
+        try:
+            return np.load(path, mmap_mode=mode, **load_kwargs)
+        except Exception:
+            continue
+    # Fall back to a regular load if memory mapping is not possible.
+    if path not in _MEMMAP_FALLBACK_WARNED:
+        warnings.warn(f"[dataloader] Falling back to standard np.load for {path} (no mmap available)", RuntimeWarning)
+        _MEMMAP_FALLBACK_WARNED.add(path)
+    return np.load(path, mmap_mode=None, **load_kwargs)
 
 
 class PackedWindowsDataset(Dataset):
@@ -281,7 +291,7 @@ class PackedWindowsDataset(Dataset):
             if self.max_total_items is not None and len(self.index) >= self.max_total_items:
                 break
 
-        self._worker_local_cache: Optional[Dict[str, Dict[str, np.memmap]]] = None
+        self._worker_local_cache: Optional[Dict[str, Dict[str, np.ndarray]]] = None
 
     def __len__(self) -> int:
         return len(self.index)
