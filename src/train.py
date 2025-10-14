@@ -374,7 +374,13 @@ def train():
 
     model = build_model(F_bins, dev)
     if dist_ctx.is_distributed:
-        model = DDP(model, device_ids=[dist_ctx.local_rank], output_device=dist_ctx.local_rank, broadcast_buffers=False)
+        model = DDP(
+            model,
+            device_ids=[dist_ctx.local_rank],
+            output_device=dist_ctx.local_rank,
+            broadcast_buffers=False,
+            find_unused_parameters=True,
+        )
     model_core = _unwrap_ddp(model)
     recon = model_core.recon
     optimizer = build_optimizer(model)
