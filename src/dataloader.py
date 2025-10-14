@@ -2,9 +2,11 @@ from __future__ import annotations
 import os, json, math, time, re
 from pathlib import Path
 from typing import Dict, Any, List, Tuple, Optional, Iterable
+from collections import OrderedDict
 
 import numpy as np
 import torch
+import warnings
 from torch.utils.data import Dataset, DataLoader, IterableDataset, get_worker_info
 
 M_ALIASES = [
@@ -216,11 +218,50 @@ def build_manifest(
     return manifest
 
 
-def _open_memmap(path: str) -> np.memmap:
-    try:
-        return np.load(path, allow_pickle=False)
-    except Exception:
-        return np.load(path, allow_pickle=False)
+_MEMMAP_FALLBACK_WARNINGS: set[str] = set()
+_CACHE_DEFAULT_LIMIT = int(os.environ.get("IFFAR_DATASET_CACHE_LIMIT", "32"))
+
+
+def _close_memmap(arr: np.ndarray) -> None:
+    mm = getattr(arr, "_mmap", None)
+    if mm is not None:
+        try:
+            mm.close()
+        except Exception:
+            pass
+
+
+def _load_array(path: str) -> np.ndarray:
+    for mode in ("r+", "r"):
+        try:
+            return np.load(path, mmap_mode=mode, allow_pickle=False)
+        except Exception:
+            continue
+    arr = np.load(path, allow_pickle=False)
+    if path not in _MEMMAP_FALLBACK_WARNINGS:
+        warnings.warn(f"[dataloader] mmap unavailable for {path}; loaded into RAM", RuntimeWarning)
+        _MEMMAP_FALLBACK_WARNINGS.add(path)
+    return arr
+
+
+class _ArrayCache:
+    def __init__(self, max_items: int):
+        self.max_items = max_items
+        self._store: OrderedDict[str, np.ndarray] = OrderedDict()
+
+    def get(self, path: str) -> np.ndarray:
+        arr = self._store.pop(path, None)
+        if arr is not None:
+            self._store[path] = arr
+            return arr
+        arr = _load_array(path)
+        if self.max_items <= 0:
+            return arr
+        self._store[path] = arr
+        if len(self._store) > self.max_items:
+            _, old = self._store.popitem(last=False)
+            _close_memmap(old)
+        return arr
 
 
 class PackedWindowsDataset(Dataset):
@@ -261,6 +302,7 @@ class PackedWindowsDataset(Dataset):
         if self.max_total_items is not None and self.max_total_items <= 0:
             self.max_total_items = None
         self.use_half = use_half
+        self._cache_limit = _CACHE_DEFAULT_LIMIT
 
         self.index: List[Tuple[int, int]] = []
         for i, e in enumerate(self.entries):
@@ -281,16 +323,21 @@ class PackedWindowsDataset(Dataset):
             if self.max_total_items is not None and len(self.index) >= self.max_total_items:
                 break
 
-        self._worker_local_cache: Optional[Dict[str, Dict[str, np.memmap]]] = None
+        self._worker_local_cache: Optional[Dict[str, _ArrayCache]] = None
 
     def __len__(self) -> int:
         return len(self.index)
 
     def _ensure_worker_cache(self) -> None:
         if self._worker_local_cache is None:
-            self._worker_local_cache = {"M": {}, "IF": {}, "PHI": {}}
+            limit = self._cache_limit
+            self._worker_local_cache = {
+                "M": _ArrayCache(limit),
+                "IF": _ArrayCache(limit),
+                "PHI": _ArrayCache(limit),
+            }
 
-    def _get_arrays(self, file_idx: int) -> Tuple[np.memmap, np.memmap, np.memmap]:
+    def _get_arrays(self, file_idx: int) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
         self._ensure_worker_cache()
         e = self.entries[file_idx]
         Mp = e["M_path"]; IFp = e["IF_path"]; PHp = e.get("PHI_path")
@@ -299,13 +346,10 @@ class PackedWindowsDataset(Dataset):
         M_cache = self._worker_local_cache["M"]
         IF_cache = self._worker_local_cache["IF"]
         PH_cache = self._worker_local_cache["PHI"]
-        if Mp not in M_cache:
-            M_cache[Mp] = _open_memmap(Mp)
-        if IFp not in IF_cache:
-            IF_cache[IFp] = _open_memmap(IFp)
-        if PHp not in PH_cache:
-            PH_cache[PHp] = _open_memmap(PHp)
-        return M_cache[Mp], IF_cache[IFp], PH_cache[PHp]
+        M_arr = M_cache.get(Mp)
+        IF_arr = IF_cache.get(IFp)
+        PH_arr = PH_cache.get(PHp)
+        return M_arr, IF_arr, PH_arr
 
     def __getitem__(self, idx: int) -> Dict[str, torch.Tensor]:
         file_idx, t0 = self.index[idx]
