@@ -1,3 +1,6 @@
 best.pt
 epoch_018.pt
 loss_history.jsonl
+manifests/sr16000/stats_n2048_h512.json
+manifests/sr16000/val_pairs.json
+manifests/sr16000/val.json
