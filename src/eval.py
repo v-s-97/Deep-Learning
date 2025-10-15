@@ -81,12 +81,12 @@ def evaluate():
     target_sr = int(hop_meta.get("sr", 16000))
 
     loader_val, ds_val = make_dataloader(
-        manifest_path="manifests/sr16000/val_pairs.json",
+        manifest_path="/leonardo_work/try25_santini/Deep-Learning/manifests/sr16000/val_pairs.json",
         L=L,
         K=K,
         batch_size=1,
         stride=K,
-        num_workers=0,
+        num_workers=2,
         file_shuffle=False,
         max_items_per_file=1,
     )
