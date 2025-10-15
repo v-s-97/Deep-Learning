@@ -73,7 +73,7 @@ def evaluate():
     stats = ckpt["stats"]
     mani_val = _load_json("/leonardo_work/try25_santini/Deep-Learning/manifests/sr16000/val_pairs.json")
     F_bins, L, K = int(mani_val["F"]), 24, 8
-    with open("/leonardo_work/try25_santini/Deep-Learning/manifests/sr16000/val_pairs.json", "r", encoding="utf-8") as f:
+    with open("/leonardo_work/try25_santini/Deep-Learning/manifests/sr16000/val.json", "r", encoding="utf-8") as f:
         val_meta = json.load(f)
     id_to_path = {entry["id"]: entry["path"] for entry in val_meta}
     hop_meta = stats.get("meta", {})
