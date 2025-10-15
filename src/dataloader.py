@@ -289,27 +289,7 @@ class PackedWindowsDataset(Dataset):
             mani = json.load(f)
         if "entries" not in mani or not mani["entries"]:
             raise ValueError(f"Manifest vuoto o invalido: {manifest_path}")
-        raw_entries = mani["entries"]
-        valid_entries = []
-        missing_reported = 0
-        for entry in raw_entries:
-            paths_to_check = [
-                entry.get("M_path"),
-                entry.get("IF_path"),
-                entry.get("PHI_path"),
-            ]
-            missing = [p for p in paths_to_check if p and not Path(p).exists()]
-            if missing:
-                if missing_reported < 20:
-                    print(f"[dataset] skip entry {entry.get('id', '?')} (missing files: {missing})")
-                missing_reported += 1
-                continue
-            valid_entries.append(entry)
-        if not valid_entries:
-            raise FileNotFoundError("Nessun file disponibile per il dataset (tutti i path mancanti).")
-        if missing_reported:
-            print(f"[dataset] Ignorate {missing_reported} entry/entries per file mancanti.")
-        self.entries = valid_entries
+        self.entries = mani["entries"]
         if file_shuffle:
             rng = np.random.default_rng(seed)
             rng.shuffle(self.entries)
