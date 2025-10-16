@@ -602,23 +602,25 @@ def run_preprocess(cfg: dict = CONFIG):
         print("[IFF-AR][preprocess] No audio found. Check CONFIG['datasets'] paths.")
         return
 
+    # 2) Split e salva i manifest
     print("[INFO] PASS 2: Split and manifest")
     manifest = make_splits(all_items, cfg["splits"], seed=cfg.get("split_seed", 42))
     for split in ("train", "val", "test"):
         _save_json([ex for ex in manifest if ex["split"] == split],
                    manifests_root / f"{split}.json")
 
-    # 2) Carica le stats già esistenti (non le ricalcola)
-    stats_path = manifests_root / f"stats_n{n_fft}_h{hop}.json"
-    if not stats_path.exists():
-        raise FileNotFoundError(f"Stats file not found: {stats_path}")
-    stats = json.load(open(stats_path, "r"))
+    # 3) Pass1 stats (train only)
+    print("[IFF-AR][preprocess] Pass1: collecting stats on train…")
+    stats = pass1_collect_stats(cfg, manifest)
+    stats_path = manifests_root / f"stats_n{cfg['n_fft']}_h{cfg['hop_length']}.json"
+    _save_json(stats, stats_path)
+    print(f"[IFF-AR][preprocess] Wrote {stats_path}")
 
-    # 3) Ricrea SOLO i manifest_pairs.json senza rigenerare le feature
+    # 4) Ricrea SOLO i manifest_pairs.json senza rigenerare le feature
     print("[IFF-AR][preprocess] Rebuilding manifest_pairs.json from existing cache…")
     cache_root = Path(cfg["io"]["cache_root"]) / f"sr{sr}"
-
     manifest_pairs = {"train": [], "val": [], "test": []}
+
     for ex in manifest:
         dataset = ex["dataset"]
         split = ex["split"]
@@ -629,9 +631,8 @@ def run_preprocess(cfg: dict = CONFIG):
         p0_path = base.with_suffix(".PH0.npy")
 
         if not m_path.exists():
-            continue  # skip se non esiste (es. file troppo corto)
+            continue  # skip se mancano i file
 
-        # deduci F, T da logmag
         M = np.load(m_path)
         T, F = M.shape
 
@@ -651,7 +652,6 @@ def run_preprocess(cfg: dict = CONFIG):
             "win_length": int(cfg["win_length"]),
         })
 
-    # 4) Scrivi i file pairs.json
     for split, entries in manifest_pairs.items():
         pairs_path = manifests_root / f"{split}_pairs.json"
         payload = {
@@ -667,6 +667,7 @@ def run_preprocess(cfg: dict = CONFIG):
         print(f"  Wrote {pairs_path} ({len(entries)} files)")
 
     print("[IFF-AR][preprocess] Done.")
+
 
 
 # Auto-run on import/execute
