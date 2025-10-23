@@ -58,6 +58,20 @@ It achieves stable and perceptually coherent audio generation, with consistent m
 | ![Predicted Spectrogram](./eval_out/spectrograms/00_spec_bass_electronic_027-039-025.png) | ![Reference Spectrogram](./eval_out/spectrograms/01_spec_keyboard_acoustic_004-093-127.png) |
 
 ---
+## Demo Notebook
+
+A notebook [`demo.ipynb`](./demo.ipynb) is provided to reproduce the inference pipeline of **IFF-AR**.
+
+The demo:
+1. Loads the pretrained checkpoint from the provided Drive link.  
+2. Imports a test clip from the repository (`eval_out/audio/02_ref_bass_electronic_027-037-100.wav`).  
+3. Runs preprocessing (STFT extraction and normalisation).  
+4. Generates autoregressive predictions of log-magnitude and instantaneous frequency.  
+5. Reconstructs the waveform via cumulative phase integration and inverse STFT.  
+6. Displays and compares the predicted and reference spectrograms, along with playback of the generated audio.
+
+**Checkpoint download:** [IFF-AR pretrained weights (Drive link)]([https://drive.google.com/your-checkpoint-link-here](https://drive.google.com/file/d/1eqt4IbJGzZD-fdxMzZnGwjMSIPdR4CBW/view?usp=share_link))  
+*(place the `.pt` file in the `Checkpoints/` directory before running the demo)*  
 
 > Deep Learning & Applied AI — Sapienza University of Rome.
 
