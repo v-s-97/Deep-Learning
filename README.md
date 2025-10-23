@@ -53,7 +53,7 @@ It achieves stable and perceptually coherent audio generation, with consistent m
 
 ## Spectrograms
 
-| Predicted Log-Magnitude | Reference Log-Magnitude |
+| Figure 1 | Figure 2 |
 |:------------------------:|:------------------------:|
 | ![Predicted Spectrogram](./eval_out/spectrograms/00_spec_bass_electronic_027-039-025.png) | ![Reference Spectrogram](./eval_out/spectrograms/01_spec_keyboard_acoustic_004-093-127.png) |
 
