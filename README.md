@@ -1,33 +1,63 @@
 # IFF-AR: Conditional Autoregressive Audio Generation via Instantaneous Frequency Modeling
 
-**Author:** Valerio Santini  
-**Course:** Deep Learning & Applied AI (DLAI 2024/2025) — Sapienza University of Rome    
+**Author:** Valerio Santini
+**Course:** Deep Learning & Applied AI (DLAI 2024/2025) — Sapienza University of Rome  
 
 ---
 
 ## Overview
 
-**IFF-AR** (Instantaneous Frequency Flow–Autoregressive) is a generative model for **audio synthesis in the frequency domain**,  
-designed to jointly predict **log-magnitude** and **instantaneous frequency (IF)** rather than reconstructing phase iteratively.  
+**IFF-AR (Instantaneous Frequency Flow–Autoregressive)** is a generative model for audio synthesis in the frequency domain, designed to jointly predict **log-magnitude** and **instantaneous frequency (IF)** instead of relying on iterative phase reconstruction.
 
-Unlike models that rely on Griffin–Lim or separate phase estimation, IFF-AR treats the phase as a **learnable probabilistic variable**,  
-modelled via a **conditional normalizing flow** (RealNVP-style) conditioned on both **context** and **spectral energy**.
+Unlike models based on Griffin–Lim or independent phase estimation, IFF-AR treats the **phase as a learnable probabilistic variable**, modeled via a **conditional normalizing flow** (RealNVP-style) conditioned on both **context** and **spectral energy**.
 
-The architecture combines:
-- a **causal Temporal Convolutional Encoder (TCN)** for context representation,  
-- a **lightweight magnitude decoder** (*MagHead*),  
-- a **Conditional Normalizing Flow** (*IF-Flow*) for phase dynamics,  
-- and a **Phase Reconstructor** to recover the waveform via cumulative integration of phase.
+---
 
-## Core pipeline
-1. **Preprocessing** — Converts waveforms into STFT representations, extracting log-magnitude and instantaneous frequency (IF) per frequency bin.
-2. **Encoding** — A causal dilated TCN processes context frames to capture temporal–spectral dependencies.  
-3. **Magnitude prediction** — MagHead reconstructs normalized log-magnitude spectra.  
-4. **Conditional flow** — IFConditionalFlow learns the distribution of phase differences given context and magnitude.  
-5. **Reconstruction** — The phase is integrated cumulatively, and iSTFT converts complex spectra back to waveform audio.  
+## Architecture
 
-The file [`Demo.ipynb`](./Demo.ipynb) provides an **end-to-end demonstration**:
-- Loads model weights and validation data  
-- Visualizes waveform and spectrograms  
-- Generates autoregressive predictions  
-- Reconstructs the waveform and plays synthesized audio  
+The IFF-AR pipeline integrates four key modules:
+
+1. **Preprocessing** – Converts audio into STFT representations and extracts log-magnitude and instantaneous frequency (IF) per frequency bin.  
+2. **Temporal Convolutional Encoder (TCN)** – A causal, dilated convolutional network capturing long-range temporal–spectral dependencies.  
+3. **Magnitude Decoder (MagHead)** – Predicts normalized log-magnitude spectra from the encoded context.  
+4. **Conditional Flow (IF-Flow)** – Learns the distribution of phase differences conditioned on magnitude and context, enabling consistent phase evolution.  
+5. **Phase Reconstruction** – Reconstructs absolute phase by cumulative integration of predicted IF, followed by inverse STFT to obtain the waveform.
+
+---
+
+## Experimental Results
+
+The model was trained on the **NSynth dataset** using *FFT = 1024*, *hop = 256*, and a Hann window.  
+It achieves stable and perceptually coherent audio generation, with consistent magnitude–phase alignment.
+
+| Metric | Value | Domain |
+|:------------------|:--------:|:-----------|
+| LogMag MAE | 27.477 | Spectral |
+| LogMag RMSE | 33.358 | Spectral |
+| IF MAE | 1.640 | Phase |
+| IF RMSE | 2.004 | Phase |
+| LSD (dB) | 3.719 | Spectral |
+| SI-SDR (dB) | -1.537 | Perceptual |
+| SI-SDR (mag GT) | -1.460 | Perceptual |
+
+*Table 1. Quantitative evaluation on the NSynth validation set.*
+
+---
+
+## Audio Samples
+
+- [Predicted audio](./eval_out/audio/02_pred_bass_electronic_027-037-100.wav)  
+- [Reference audio](./eval_out/audio/02_ref_bass_electronic_027-037-100.wav)
+
+---
+
+## Spectrograms
+
+| Predicted Log-Magnitude | Reference Log-Magnitude |
+|:------------------------:|:------------------------:|
+| ![Predicted Spectrogram](./eval_out/spectrograms/00_spec_bass_electronic_027-039-025.png) | ![Reference Spectrogram](./eval_out/spectrograms/01_spec_keyboard_acoustic_004-093-127.png) |
+
+---
+
+> Deep Learning & Applied AI — Sapienza University of Rome.
+
