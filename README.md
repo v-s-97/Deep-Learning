@@ -70,8 +70,9 @@ The demo:
 5. Reconstructs the waveform via cumulative phase integration and inverse STFT.  
 6. Displays and compares the predicted and reference spectrograms, along with playback of the generated audio.
 
-**Checkpoint download:** [IFF-AR pretrained weights (Drive link)]([https://drive.google.com/your-checkpoint-link-here](https://drive.google.com/file/d/1eqt4IbJGzZD-fdxMzZnGwjMSIPdR4CBW/view?usp=share_link))  
-*(place the `.pt` file in the `Checkpoints/` directory before running the demo)*  
+**Checkpoint download:** [IFF-AR pretrained weights (Drive link)](https://drive.google.com/file/d/1eqt4IbJGzZD-fdxMzZnGwjMSIPdR4CBW/view?usp=share_link)  
+*(place the `.pt` file in the `checkpoints/` directory before running the demo)*
+
 
 > Deep Learning & Applied AI — Sapienza University of Rome.
 
