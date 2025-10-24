@@ -32,7 +32,6 @@ class PhaseReconstructor:
 
     @classmethod
     def denorm_mag(cls, M: torch.Tensor, stats: dict) -> torch.Tensor:
-        """Denormalizza log-magnitudine (dB) usando mean/std globali."""
         info = cls._resolve_stats(stats, "logmag", "M")
         mean = cls._broadcast_param(info.get("mean", 0.0), M)
         std = cls._broadcast_param(info.get("std", 1.0), M)
@@ -40,7 +39,6 @@ class PhaseReconstructor:
 
     @classmethod
     def denorm_if(cls, IF: torch.Tensor, stats: dict) -> torch.Tensor:
-        """Denormalizza IF usando center/scale per-bin."""
         info = cls._resolve_stats(stats, "if_unwrapped", "IF")
         center = cls._broadcast_param(info.get("center", 0.0), IF)
         scale = cls._broadcast_param(info.get("scale", 1.0), IF)
@@ -48,7 +46,6 @@ class PhaseReconstructor:
 
     @staticmethod
     def integrate_phase_seq(IF_seq: torch.Tensor, phi0: torch.Tensor | None = None) -> torch.Tensor:
-        """Integra IF → fase cumulativa con fase iniziale opzionale."""
         if phi0 is None:
             phi0 = torch.zeros(IF_seq.size(0), IF_seq.size(2), device=IF_seq.device, dtype=IF_seq.dtype)
         else:
@@ -59,10 +56,6 @@ class PhaseReconstructor:
 
     @staticmethod
     def build_complex(M_db: torch.Tensor, phi: torch.Tensor) -> torch.Tensor:
-        """
-        M_db: [B,K,F] log-magnitudo in dB (denormalizzata)
-        phi:  [B,K,F] fase cumulativa
-        """
         mag = torch.pow(10.0, M_db / 20.0)
         real = mag * torch.cos(phi)
         imag = mag * torch.sin(phi)
