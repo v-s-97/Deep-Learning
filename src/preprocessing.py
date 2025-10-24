@@ -1,9 +1,3 @@
-# ==============================================
-# IFF-AR — Preprocessing Single-File (drop‑in, no argparse/YAML)
-# Target: MacBook Pro M2 (MPS-friendly), FP16 I/O
-# Run: just execute this file with Python. Edit CONFIG below as needed.
-# ==============================================
-
 from __future__ import annotations
 from pathlib import Path
 from typing import List, Dict, Optional, Tuple
@@ -14,9 +8,6 @@ import soundfile as sf
 import librosa
 import torch
 
-# -----------------------------
-# User-editable CONFIG (Python)
-# -----------------------------
 CONFIG = {
     # SR & STFT
     "sample_rate": 16000,
@@ -28,24 +19,18 @@ CONFIG = {
     "pad_mode": "reflect",
     "epsilon": 1.0e-7,
 
-    # Datasets to scan (adjust paths!)
     "datasets": [
         {"name": "nsynth", "root": "/leonardo_work/try25_santini/Deep-Learning/dataset/nsynth-train/audio", "pattern": "**/*.wav"},
         # {"name": "vctk",   "root": "data/raw/vctk",   "pattern": "**/*.wav"},
     ],
 
-    # Splits
     "splits": {"train": 0.9, "val": 0.05, "test": 0.05},
     "split_seed": 42,
     "min_duration_sec": 0.5,
 
-    # Normalization
-    # logmag: global mean/std with quantile clipping during stats
     "logmag_norm": {"type": "global", "clip_quantiles": [0.01, 0.99]},
-    # if_unwrapped: per-bin median/MAD or mean/std
     "if_norm": {"type": "per_bin", "estimator": "mad", "clip_quantiles": [0.01, 0.99], "clip_value": 50.0},
-
-    # I/O
+ 
     "io": {
         "processed_root": "data/processed",
         "manifests_root": "manifests",
@@ -54,13 +39,8 @@ CONFIG = {
         "write_fp16": True,
     },
 
-    # QA
     "qa": {"enable": True, "num_examples": 4, "output_dir": "qa"},
 }
-
-# =============================
-# Utility I/O helpers
-# =============================
 
 def _save_json(obj, path: Path):
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -72,10 +52,6 @@ def _save_npz(path: Path, **arrays):
     path.parent.mkdir(parents=True, exist_ok=True)
     arrays = {k: np.ascontiguousarray(v) for k, v in arrays.items()}
     np.savez_compressed(path, **arrays)
-
-# =============================
-# Discovery & audio loading
-# =============================
 
 def discover_audio(root: Path, pattern: str, dataset_name: str, min_dur_sec: float = 0.5) -> List[Dict]:
     """Scan directory and collect audio files metadata.
@@ -115,9 +91,6 @@ def load_audio_resample(path: str, target_sr: int) -> tuple[np.ndarray, int]:
     y = (y / peak).astype(np.float32)
     return y, sr
 
-# =============================
-# STFT & feature extraction
-# =============================
 
 def stft_complex(y: np.ndarray, n_fft: int, hop: int, win_length: int, window: str = "hann", center: bool = True, pad_mode: str = "reflect") -> np.ndarray:
     """Complex STFT as [T, F] (librosa returns [F, T])."""
@@ -143,10 +116,6 @@ def unwrap_phase_time(phase_tf: np.ndarray) -> np.ndarray:
 def phase_to_if(dphi_tf: np.ndarray) -> np.ndarray:
     """Instantaneous frequency as unwrapped phase derivative per hop (rad / hop)."""
     return dphi_tf.astype(np.float32)
-
-# =============================
-# Stats (global & per-bin robust)
-# =============================
 
 class RunningStats:
     """Global mean/std with optional quantile clipping during accumulation."""
@@ -251,10 +220,6 @@ class RobustPerBin:
                 "clip_quantiles": self.clip_quantiles,
             }
 
-# =============================
-# Splitting
-# =============================
-
 def make_splits(items: List[Dict], split_fracs: Dict[str, float], seed: int = 42) -> List[Dict]:
     rng = random.Random(seed)
     items_shuf = items[:]
@@ -266,10 +231,6 @@ def make_splits(items: List[Dict], split_fracs: Dict[str, float], seed: int = 42
     for it, sp in zip(items_shuf, splits):
         it["split"] = sp
     return items_shuf
-
-# =============================
-# Passes & normalization
-# =============================
 
 def pass1_collect_stats(cfg: dict, manifest: List[Dict]) -> dict:
     """
@@ -284,7 +245,6 @@ def pass1_collect_stats(cfg: dict, manifest: List[Dict]) -> dict:
     win_length = cfg["win_length"]
     eps = float(cfg["epsilon"])
 
-    # --- inizializza collector ---
     logmag_stats = RunningStats(
         clip_quantiles=tuple(cfg["logmag_norm"].get("clip_quantiles", []))
         if cfg["logmag_norm"].get("clip_quantiles")
@@ -300,7 +260,6 @@ def pass1_collect_stats(cfg: dict, manifest: List[Dict]) -> dict:
         else None,
     )
 
-    # --- loop sui file di train ---
     for ex in manifest:
         if ex.get("split") != "train":
             continue
@@ -331,10 +290,8 @@ def pass1_collect_stats(cfg: dict, manifest: List[Dict]) -> dict:
         logmag_stats.update(logmag)
         if_stats.update(IF)
 
-    # --- ricalcola mean/std finali da reservoir con clipping ---
     logmag_stats.finalize()
 
-    # --- costruisci dizionario stats ---
     stats = {
         "logmag": {
             "type": "global",
@@ -465,7 +422,6 @@ def pass2_process_and_write(
             "win_length": int(win_length),
         })
 
-    # write index files next to processed root
     idx_root = out_root.parent
     idx_dir = idx_root / f"sr{sr}"
     idx_dir.mkdir(parents=True, exist_ok=True)
@@ -489,9 +445,6 @@ def pass2_process_and_write(
         }
         _save_json(payload, pairs_path)
 
-# =============================
-# QA (optional sanity recon)
-# =============================
 
 def _istft_reconstruct(cfg: dict, logmag: np.ndarray, IF: np.ndarray) -> np.ndarray:
     n_fft = cfg["n_fft"]
@@ -534,9 +487,6 @@ def run_qa(cfg: dict, out_root: Path, manifests_root: Path, num_examples: int = 
         report["examples"].append({"id": ex["id"], "npz": ex["path"], "wav": str(wav_out)})
     _save_json(report, out_dir / "qa_report.json")
 
-# =============================
-# RUN
-# =============================
 
 # def run_preprocess(cfg: dict = CONFIG):
 #     sr = cfg["sample_rate"]
@@ -668,7 +618,4 @@ def run_preprocess(cfg: dict = CONFIG):
 
     print("[IFF-AR][preprocess] Done.")
 
-
-
-# Auto-run on import/execute
 run_preprocess(CONFIG)
