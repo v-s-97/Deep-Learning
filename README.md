@@ -71,7 +71,7 @@ The demo:
 6. Displays and compares the predicted and reference spectrograms, along with playback of the generated audio.
 
 **Checkpoint download:** [IFF-AR pretrained weights (Drive link)](https://drive.google.com/file/d/1eqt4IbJGzZD-fdxMzZnGwjMSIPdR4CBW/view?usp=share_link)  
-*(place the `.pt` file in the `checkpoints/` directory before running the demo and download the ![audio file](./brass_acoustic_015-067-127.wav))*
+*(place the `.pt` file in the `checkpoints/` directory before running the demo and download the [audio file](./brass_acoustic_015-067-127.wav))*
 
 
 > Deep Learning & Applied AI — Sapienza University of Rome.
